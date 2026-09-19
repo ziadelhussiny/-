@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -7,11 +16,15 @@
       "settings": {
         "show_announcement": true,
         "announcement_text": "Free Shipping Across Egypt On Orders Over EGP 2,000",
+        "announcement_link": "",
         "announcement_color": "#751019",
         "accent_color": "#991622",
-        "tagline": "Arabic heritage for a better tomorrow"
+        "tagline": "Arabic heritage for a better tomorrow",
+        "menu": "main-menu"
       }
     }
   },
-  "order": ["maliki_header"]
+  "order": [
+    "maliki_header"
+  ]
 }
