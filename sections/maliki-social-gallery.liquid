@@ -1,0 +1,54 @@
+<section class="mk-section mk-paper mk-social" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap">
+    <div class="mk-section-heading"><h2 class="mk-section-title mk-heading-line">{{ section.settings.heading }}</h2></div>
+    <div class="mk-social-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 500 | image_tag: widths: '180, 300, 500', loading: 'lazy', alt: block.settings.label }}
+          {% else %}
+            {% capture fallback %}maliki-social-{{ forloop.index | modulo: 6 | plus: 1 }}.jpg{% endcapture %}
+            {% if forloop.index <= 6 %}{% capture fallback %}maliki-social-{{ forloop.index }}.jpg{% endcapture %}{% endif %}
+            <img src="{{ fallback | asset_url }}" width="300" height="170" loading="lazy" alt="{{ block.settings.label | escape }}">
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki social gallery",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Follow us on Instagram" },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "label", "label": "Image description", "default": "Maliki on Instagram" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki social gallery",
+      "blocks": [
+        { "type": "image" }, { "type": "image" }, { "type": "image" },
+        { "type": "image" }, { "type": "image" }, { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

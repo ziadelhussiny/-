@@ -1,0 +1,64 @@
+{% liquid
+  assign hero_alt = section.settings.image.alt | default: section.settings.heading
+%}
+
+<section
+  class="mk-section mk-hero"
+  dir="{{ section.settings.direction }}"
+  style="--mk-hero-height: {{ section.settings.height }}px; --mk-focus: {{ section.settings.image_position }};"
+>
+  <picture>
+    {% if section.settings.mobile_image != blank %}
+      <source media="(max-width: 639px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">
+    {% endif %}
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'mk-hero__media', widths: '750, 1200, 1800, 2400', sizes: '100vw', loading: 'eager', alt: hero_alt }}
+    {% else %}
+      <img class="mk-hero__media" src="{{ 'maliki-hero.png' | asset_url }}" width="1536" height="864" loading="eager" alt="{{ hero_alt | escape }}">
+    {% endif %}
+  </picture>
+  <div class="mk-hero__content">
+    <div class="mk-hero__content-inner">
+      {% if section.settings.eyebrow != blank %}<p class="mk-kicker mk-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h1 class="mk-title">{{ section.settings.heading }}</h1>{% endif %}
+      {% if section.settings.copy != blank %}<div class="mk-hero__copy">{{ section.settings.copy }}</div>{% endif %}
+      {% if section.settings.button_label != blank %}
+        <a class="mk-button {% if section.settings.button_style == 'gold' %}mk-button--gold{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% if section.settings.show_dots %}<div class="mk-hero__dots" aria-hidden="true"><i class="mk-hero__dot"></i><i class="mk-hero__dot"></i><i class="mk-hero__dot"></i></div>{% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Maliki hero",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Desktop image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "select", "id": "image_position", "label": "Image focus", "default": "center", "options": [
+      { "value": "left center", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right center", "label": "Right" }
+    ] },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story · Our heritage · Your journey" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "More Than a Seat,\nA Way of Life" },
+    { "type": "richtext", "id": "copy", "label": "Text", "default": "<p>We bring the beauty of Arabic majlis to modern life, preserving our heritage while making it more accessible.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Our Story" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "button_style", "label": "Button style", "default": "red", "options": [
+      { "value": "red", "label": "Heritage red" },
+      { "value": "gold", "label": "Gold" }
+    ] },
+    { "type": "range", "id": "height", "label": "Desktop height", "min": 320, "max": 720, "step": 10, "unit": "px", "default": 430 },
+    { "type": "checkbox", "id": "show_dots", "label": "Show slider dots", "default": false }
+  ],
+  "presets": [{ "name": "Maliki hero" }]
+}
+{% endschema %}
+

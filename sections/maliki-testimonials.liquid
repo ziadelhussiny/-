@@ -1,0 +1,51 @@
+<section class="mk-section mk-paper mk-testimonials" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap">
+    <div class="mk-section-heading"><h2 class="mk-section-title mk-heading-line">{{ section.settings.heading }}</h2></div>
+    <div class="mk-testimonial-grid">
+      {% for block in section.blocks %}
+        <article class="mk-quote" {{ block.shopify_attributes }}>
+          <div class="mk-stars" aria-label="{{ block.settings.rating }} out of 5 stars">{% for i in (1..block.settings.rating) %}★{% endfor %}</div>
+          <blockquote>“{{ block.settings.quote }}”</blockquote>
+          <cite>{{ block.settings.author }}</cite>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki testimonials",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Beautiful authentic design and excellent quality." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Verified customer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "quote": "تصاميم جميلة وخامات تراثية أصيلة.", "author": "خالد من الجيزة" } },
+        { "type": "testimonial", "settings": { "quote": "منتجات عملية وجميلة ومناسبة للرحلات.", "author": "سارة من الإسكندرية" } },
+        { "type": "testimonial", "settings": { "quote": "الجودة ممتازة وخدمة التوصيل سريعة.", "author": "أحمد من القاهرة" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

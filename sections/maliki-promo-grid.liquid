@@ -1,0 +1,57 @@
+<section class="mk-section mk-promo-grid" dir="{{ section.settings.direction }}">
+  {% for block in section.blocks %}
+    <article class="mk-promo" {{ block.shopify_attributes }}>
+      {% if block.settings.image != blank %}
+        {{ block.settings.image | image_url: width: 1800 | image_tag: widths: '750, 1200, 1800', loading: 'lazy', alt: block.settings.heading }}
+      {% elsif forloop.index == 1 %}
+        <img src="{{ 'maliki-journey.png' | asset_url }}" width="1536" height="864" loading="lazy" alt="{{ block.settings.heading | escape }}">
+      {% else %}
+        <img src="{{ 'maliki-craftsmanship.png' | asset_url }}" width="1536" height="1024" loading="lazy" alt="{{ block.settings.heading | escape }}">
+      {% endif %}
+      <div class="mk-promo__inner">
+        {% if block.settings.show_play %}<a class="mk-play" href="{{ block.settings.link | default: '#' }}" aria-label="Play video">▶</a>{% endif %}
+        <h2 class="mk-promo__title">{{ block.settings.heading }}</h2>
+        {% if block.settings.text != blank %}<p class="mk-promo__copy">{{ block.settings.text }}</p>{% endif %}
+        {% if block.settings.button_label != blank %}<a class="mk-button mk-button--gold" href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.button_label }}</a>{% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Maliki promo grid",
+  "tag": "section",
+  "max_blocks": 2,
+  "settings": [
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Promo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background image" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "From heritage to today's journeys" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Authenticity and practicality meet in every unique experience." },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Learn more" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "show_play", "label": "Show play button", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki promo grid",
+      "blocks": [
+        { "type": "promo", "settings": { "heading": "من التراث... إلى رحلات اليوم", "text": "نجمع بين الأصالة والعملية لتبقى كل تجربة فريدة", "button_label": "تعرف علينا" } },
+        { "type": "promo", "settings": { "heading": "حكاية تفاصيل تصنع الفرق", "text": "شاهد الفيديو", "button_label": "", "show_play": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

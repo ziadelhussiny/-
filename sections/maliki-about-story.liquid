@@ -1,0 +1,80 @@
+<section class="mk-section mk-paper mk-about-story" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap mk-about-story__grid">
+    <div class="mk-about-story__panel mk-about-story__text">
+      <p class="mk-kicker">{{ section.settings.story_eyebrow }}</p>
+      <h2 class="mk-section-title">{{ section.settings.story_heading }}</h2>
+      <div class="mk-copy">{{ section.settings.story_text }}</div>
+      {% if section.settings.signature != blank %}<span class="mk-signature">{{ section.settings.signature }}</span>{% endif %}
+    </div>
+
+    <div class="mk-about-story__panel">
+      {% if section.settings.main_image != blank %}
+        {{ section.settings.main_image | image_url: width: 1200 | image_tag: class: 'mk-about-story__photo', widths: '600, 900, 1200', loading: 'lazy', alt: section.settings.story_heading }}
+      {% else %}
+        <img class="mk-about-story__photo" src="{{ 'maliki-craftsmanship.png' | asset_url }}" width="1536" height="1024" loading="lazy" alt="{{ section.settings.story_heading | escape }}">
+      {% endif %}
+    </div>
+
+    <div class="mk-about-story__panel">
+      <p class="mk-kicker">{{ section.settings.craft_eyebrow }}</p>
+      <h2 class="mk-section-title">{{ section.settings.craft_heading }}</h2>
+      <div class="mk-copy">{{ section.settings.craft_text }}</div>
+      <div class="mk-craft-grid">
+        {% for block in section.blocks %}
+          <div class="mk-craft-card" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 500 | image_tag: widths: '180, 300, 500', loading: 'lazy', alt: block.settings.title }}
+            {% else %}
+              <img src="{{ 'maliki-craftsmanship.png' | asset_url }}" width="420" height="300" loading="lazy" alt="{{ block.settings.title | escape }}">
+            {% endif %}
+            <strong>{{ block.settings.title }}</strong>
+            <span>{{ block.settings.text }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki about story",
+  "tag": "section",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }
+    ] },
+    { "type": "text", "id": "story_eyebrow", "label": "Story eyebrow", "default": "Our story" },
+    { "type": "textarea", "id": "story_heading", "label": "Story heading", "default": "Rooted in Heritage\nMade for Today" },
+    { "type": "richtext", "id": "story_text", "label": "Story text", "default": "<p>Malik Arabic was born from a simple belief — that the Arab majlis is more than seating, it’s a symbol of hospitality, connection, and identity.</p><p>We preserve this rich tradition while adapting it to modern life with premium, portable majlis seating.</p>" },
+    { "type": "text", "id": "signature", "label": "Signature", "default": "Tradition Lives On" },
+    { "type": "image_picker", "id": "main_image", "label": "Main image" },
+    { "type": "text", "id": "craft_eyebrow", "label": "Craft eyebrow", "default": "Craftsmanship & materials" },
+    { "type": "text", "id": "craft_heading", "label": "Craft heading", "default": "Quality in Every Detail" },
+    { "type": "richtext", "id": "craft_text", "label": "Craft text", "default": "<p>We carefully select premium fabrics, durable materials, and traditional patterns inspired by authentic Arabic heritage.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "detail",
+      "name": "Craft detail",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Premium Arabic Fabrics" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Authentic patterns, modern durability" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki about story",
+      "blocks": [
+        { "type": "detail", "settings": { "title": "Premium Arabic Fabrics", "text": "Authentic patterns, modern durability" } },
+        { "type": "detail", "settings": { "title": "Comfortable Support", "text": "High-quality foam for lasting comfort" } },
+        { "type": "detail", "settings": { "title": "Skilled Craftsmanship", "text": "Attention to detail in every stitch" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

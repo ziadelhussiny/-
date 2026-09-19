@@ -1,0 +1,101 @@
+<section class="mk-section mk-paper mk-contact-hub" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap mk-contact-hub__grid">
+    <div class="mk-card mk-contact-form-card">
+      <h2 class="mk-section-title mk-heading-line">{{ section.settings.form_heading }}</h2>
+      <p class="mk-copy">{{ section.settings.form_text }}</p>
+      {% form 'contact', class: 'mk-contact-form' %}
+        {% if form.posted_successfully? %}<p class="mk-form-message">{{ section.settings.success_message }}</p>{% endif %}
+        {{ form.errors | default_errors }}
+        <div class="mk-field"><label class="visually-hidden" for="ContactName-{{ section.id }}">Name</label><input id="ContactName-{{ section.id }}" name="contact[name]" value="{{ form.name }}" placeholder="{{ section.settings.name_placeholder }}" required></div>
+        <div class="mk-field"><label class="visually-hidden" for="ContactEmail-{{ section.id }}">Email</label><input id="ContactEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" placeholder="{{ section.settings.email_placeholder }}" required autocomplete="email"></div>
+        <div class="mk-field mk-field--wide"><label class="visually-hidden" for="ContactSubject-{{ section.id }}">Subject</label><input id="ContactSubject-{{ section.id }}" name="contact[subject]" value="{{ form.subject }}" placeholder="{{ section.settings.subject_placeholder }}"></div>
+        <div class="mk-field mk-field--wide"><label class="visually-hidden" for="ContactMessage-{{ section.id }}">Message</label><textarea id="ContactMessage-{{ section.id }}" name="contact[body]" placeholder="{{ section.settings.message_placeholder }}" required>{{ form.body }}</textarea></div>
+        <button class="mk-button" type="submit">{{ section.settings.submit_label }}</button>
+      {% endform %}
+    </div>
+
+    <div class="mk-card mk-contact-methods">
+      <h2 class="mk-section-title mk-heading-line">{{ section.settings.methods_heading }}</h2>
+      <p class="mk-copy">{{ section.settings.methods_text }}</p>
+      <div class="mk-method-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'method' %}
+            <a class="mk-method" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+              <span class="mk-method__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+              <div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.line_1 }}<br>{{ block.settings.line_2 }}</p></div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="mk-card mk-faq">
+      <h2 class="mk-section-title mk-heading-line">{{ section.settings.faq_heading }}</h2>
+      {% for block in section.blocks %}
+        {% if block.type == 'faq' %}
+          <details {{ block.shopify_attributes }}><summary>{{ block.settings.question }}</summary><div class="mk-faq__answer">{{ block.settings.answer }}</div></details>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki contact hub",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }
+    ] },
+    { "type": "text", "id": "form_heading", "label": "Form heading", "default": "Send Us a Message" },
+    { "type": "text", "id": "form_text", "label": "Form text", "default": "Fill in the form below and we’ll get back to you as soon as possible." },
+    { "type": "text", "id": "name_placeholder", "label": "Name placeholder", "default": "Full Name *" },
+    { "type": "text", "id": "email_placeholder", "label": "Email placeholder", "default": "Email Address *" },
+    { "type": "text", "id": "subject_placeholder", "label": "Subject placeholder", "default": "Subject *" },
+    { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Your Message *" },
+    { "type": "text", "id": "submit_label", "label": "Submit label", "default": "Send Message" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you. We’ll be in touch soon." },
+    { "type": "text", "id": "methods_heading", "label": "Methods heading", "default": "Get in Touch" },
+    { "type": "text", "id": "methods_text", "label": "Methods text", "default": "Choose your preferred way to reach us. We’re always here for you." },
+    { "type": "text", "id": "faq_heading", "label": "FAQ heading", "default": "Frequently Asked Questions" }
+  ],
+  "blocks": [
+    {
+      "type": "method",
+      "name": "Contact method",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon or symbol", "default": "☎" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Phone" },
+        { "type": "text", "id": "line_1", "label": "First line", "default": "+20 10 1234 5678" },
+        { "type": "text", "id": "line_2", "label": "Second line", "default": "Sun – Thu, 9 AM – 8 PM" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What are your working hours?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>We are available Sunday through Thursday from 9:00 AM to 8:00 PM.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki contact hub",
+      "blocks": [
+        { "type": "method", "settings": { "icon": "☎", "title": "Phone", "line_1": "+20 10 1234 5678", "line_2": "Sun – Thu · 9 AM – 8 PM" } },
+        { "type": "method", "settings": { "icon": "✉", "title": "Email", "line_1": "info@maliki-arabic.com", "line_2": "We respond within 24 hours" } },
+        { "type": "method", "settings": { "icon": "⌖", "title": "Our Location", "line_1": "Cairo, Egypt", "line_2": "6th of October City" } },
+        { "type": "method", "settings": { "icon": "◉", "title": "WhatsApp", "line_1": "+20 10 1234 5678", "line_2": "Chat with us directly" } },
+        { "type": "faq", "settings": { "question": "What are your working hours?", "answer": "<p>Sunday through Thursday, from 9:00 AM to 8:00 PM.</p>" } },
+        { "type": "faq", "settings": { "question": "How long does delivery take?", "answer": "<p>Delivery time depends on your location and the selected product.</p>" } },
+        { "type": "faq", "settings": { "question": "Can I customize my majlis set?", "answer": "<p>Yes. Contact our team to discuss fabrics, sizes, and available options.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

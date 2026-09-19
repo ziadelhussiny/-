@@ -1,145 +1,69 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "content": {
-          "type": "text",
-          "name": "t:names.content",
-          "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "title",
-        "content"
-      ],
+    "hero": {
+      "type": "maliki-hero",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 40,
-        "padding-block-end": 0
+        "image_position": "center",
+        "direction": "ltr",
+        "eyebrow": "Let's stay connected",
+        "heading": "Contact Us",
+        "copy": "<p>We’re here to help and happy to hear from you. Whether you have a question, need support, or want to learn more about our products, our team is always ready to assist you.</p>",
+        "button_label": "",
+        "button_style": "red",
+        "height": 320,
+        "show_dots": false
       }
     },
-    "form": {
-      "type": "section",
+    "hub": {
+      "type": "maliki-contact-hub",
       "blocks": {
-        "contact_form_UwiCkQ": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "input_style": "default",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
+        "phone": { "type": "method", "settings": { "icon": "☎", "title": "Phone", "line_1": "+20 10 1234 5678", "line_2": "Sun – Thu · 9 AM – 8 PM" } },
+        "email": { "type": "method", "settings": { "icon": "✉", "title": "Email", "line_1": "info@maliki-arabic.com", "line_2": "We respond within 24 hours" } },
+        "location": { "type": "method", "settings": { "icon": "⌖", "title": "Our Location", "line_1": "Cairo, Egypt", "line_2": "6th of October City" } },
+        "whatsapp": { "type": "method", "settings": { "icon": "◉", "title": "WhatsApp", "line_1": "+20 10 1234 5678", "line_2": "Chat with us directly" } },
+        "faq1": { "type": "faq", "settings": { "question": "What are your working hours?", "answer": "<p>Sunday through Thursday, from 9:00 AM to 8:00 PM.</p>" } },
+        "faq2": { "type": "faq", "settings": { "question": "How long does delivery take?", "answer": "<p>Delivery time depends on your location and the selected product.</p>" } },
+        "faq3": { "type": "faq", "settings": { "question": "Can I customize my majlis set?", "answer": "<p>Yes. Contact our team to discuss fabrics, sizes, and available options.</p>" } }
       },
-      "block_order": [
-        "contact_form_UwiCkQ"
-      ],
-      "name": "t:names.contact_form",
+      "block_order": ["phone", "email", "location", "whatsapp", "faq1", "faq2", "faq3"],
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 84
+        "direction": "ltr",
+        "form_heading": "Send Us a Message",
+        "form_text": "Fill in the form below and we’ll get back to you as soon as possible.",
+        "name_placeholder": "Full Name *",
+        "email_placeholder": "Email Address *",
+        "subject_placeholder": "Subject *",
+        "message_placeholder": "Your Message *",
+        "submit_label": "Send Message",
+        "success_message": "Thank you. We’ll be in touch soon.",
+        "methods_heading": "Get in Touch",
+        "methods_text": "Choose your preferred way to reach us. We’re always here for you.",
+        "faq_heading": "Frequently Asked Questions"
       }
+    },
+    "showroom": {
+      "type": "maliki-showroom",
+      "settings": {
+        "heading": "Visit Our Showroom",
+        "text": "Experience our majlis sets and Arabic heritage collections in person. We’d love to welcome you!",
+        "address": "6th of October City, Giza Governorate",
+        "hours": "Sun – Thu · 9:00 AM – 8:00 PM",
+        "button_label": "Get Directions",
+        "map_label": "Maliki Arabic",
+        "direction": "ltr"
+      }
+    },
+    "benefits": {
+      "type": "maliki-icon-strip",
+      "blocks": {
+        "b1": { "type": "feature", "settings": { "icon": "▣", "title": "Easy Transport", "text": "Lightweight & Foldable" } },
+        "b2": { "type": "feature", "settings": { "icon": "◆", "title": "Durable Materials", "text": "Built for Real Adventures" } },
+        "b3": { "type": "feature", "settings": { "icon": "▲", "title": "Traditional Style", "text": "Authentic Arabic Design" } },
+        "b4": { "type": "feature", "settings": { "icon": "◇", "title": "Fast Delivery", "text": "Across Egypt" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": { "direction": "ltr" }
     }
   },
-  "order": [
-    "main",
-    "form"
-  ]
+  "order": ["hero", "hub", "showroom", "benefits"]
 }

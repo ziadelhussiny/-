@@ -24,6 +24,8 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
+    {{ 'maliki.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'maliki.js' | asset_url }}" defer="defer"></script>
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}

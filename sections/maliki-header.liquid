@@ -1,0 +1,96 @@
+{% liquid
+  assign logo_alt = section.settings.logo.alt | default: shop.name
+%}
+
+<div class="mk-header-shell" style="--mk-red: {{ section.settings.accent_color }}; --mk-red-dark: {{ section.settings.announcement_color }};">
+  {% if section.settings.show_announcement %}
+    <div class="mk-announcement">
+      <span aria-hidden="true">▣</span>
+      {% if section.settings.announcement_link != blank %}<a href="{{ section.settings.announcement_link }}">{% endif %}
+      {{ section.settings.announcement_text }}
+      {% if section.settings.announcement_link != blank %}</a>{% endif %}
+    </div>
+  {% endif %}
+
+  <header class="mk-header">
+    <div class="mk-header__inner">
+      <a class="mk-header__brand" href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 220 | image_tag: widths: '90, 140, 220', alt: logo_alt, loading: 'eager' }}
+        {% else %}
+          <img src="{{ 'maliki-logo.jpg' | asset_url }}" width="108" height="108" alt="{{ shop.name | escape }}" loading="eager">
+        {% endif %}
+        {% if section.settings.tagline != blank %}<span class="mk-header__tagline">{{ section.settings.tagline }}</span>{% endif %}
+      </a>
+
+      <nav class="mk-header__nav" aria-label="Primary navigation">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% else %}
+          <a href="{{ routes.root_url }}">Home</a>
+          <a href="/pages/about-us">About Us</a>
+          <a href="/pages/contact-us">Contact Us</a>
+        {% endfor %}
+      </nav>
+
+      <button class="mk-menu-button" type="button" aria-label="Open menu" data-mk-menu-open>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      <div class="mk-header__actions">
+        <a class="mk-icon-link mk-search-link" href="{{ routes.search_url }}" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+        </a>
+        <a class="mk-icon-link mk-account-link" href="{{ routes.account_url }}" aria-label="Account">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 3.5-6.4 8-6.4s7.2 2.2 8 6.4"/></svg>
+        </a>
+        <a class="mk-icon-link" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L20.5 7H5.2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          <span class="mk-cart-count">{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mk-mobile-menu" data-mk-menu hidden>
+    <div class="mk-mobile-menu__panel">
+      <div class="mk-mobile-menu__top">
+        <strong>{{ shop.name }}</strong>
+        <button class="mk-menu-button" type="button" aria-label="Close menu" data-mk-menu-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+        </button>
+      </div>
+      <nav class="mk-mobile-menu__links" aria-label="Mobile navigation">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% else %}
+          <a href="{{ routes.root_url }}">Home</a>
+          <a href="/pages/about-us">About Us</a>
+          <a href="/pages/contact-us">Contact Us</a>
+        {% endfor %}
+      </nav>
+    </div>
+    <button type="button" aria-label="Close menu" data-mk-menu-close></button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Maliki header",
+  "tag": "section",
+  "class": "header-section",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "checkbox", "id": "show_announcement", "label": "Show announcement", "default": true },
+    { "type": "text", "id": "announcement_text", "label": "Announcement", "default": "Free Shipping Across Egypt On Orders Over EGP 2,000" },
+    { "type": "url", "id": "announcement_link", "label": "Announcement link" },
+    { "type": "color", "id": "announcement_color", "label": "Announcement color", "default": "#751019" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#991622" },
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "text", "id": "tagline", "label": "Desktop tagline", "default": "Arabic heritage for a better tomorrow" },
+    { "type": "link_list", "id": "menu", "label": "Menu" }
+  ],
+  "presets": [{ "name": "Maliki header" }]
+}
+{% endschema %}
+

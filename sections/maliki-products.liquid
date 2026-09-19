@@ -1,0 +1,85 @@
+<section class="mk-section mk-paper mk-products" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap">
+    <div class="mk-section-heading">
+      <h2 class="mk-section-title mk-heading-line">{{ section.settings.heading }}</h2>
+      {% if section.settings.view_all_label != blank %}<a href="{{ section.settings.view_all_link | default: routes.all_products_collection_url }}">{{ section.settings.view_all_label }}</a>{% endif %}
+    </div>
+    <div class="mk-product-grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign card_product = block.settings.product
+          assign card_title = block.settings.title
+          assign card_price = block.settings.price
+          assign card_url = block.settings.link | default: routes.all_products_collection_url
+          if card_product != blank
+            assign card_title = card_product.title
+            assign card_price = card_product.price | money
+            assign card_url = card_product.url
+          endif
+        %}
+        <a class="mk-product-card" href="{{ card_url }}" {{ block.shopify_attributes }}>
+          <div class="mk-product-card__media">
+            {% if card_product.featured_image != blank %}
+              {{ card_product.featured_image | image_url: width: 700 | image_tag: widths: '280, 480, 700', loading: 'lazy', alt: card_title }}
+            {% elsif block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 700 | image_tag: widths: '280, 480, 700', loading: 'lazy', alt: card_title }}
+            {% else %}
+              {% case forloop.index %}
+                {% when 1 %}{% assign fallback = 'maliki-product-seating.jpg' %}
+                {% when 2 %}{% assign fallback = 'maliki-product-bag.jpg' %}
+                {% when 3 %}{% assign fallback = 'maliki-product-mat.jpg' %}
+                {% else %}{% assign fallback = 'maliki-product-camp.jpg' %}
+              {% endcase %}
+              <img src="{{ fallback | asset_url }}" width="420" height="240" loading="lazy" alt="{{ card_title | escape }}">
+            {% endif %}
+          </div>
+          {% if section.settings.show_heart %}<span class="mk-product-card__heart" aria-hidden="true">♡</span>{% endif %}
+          <p class="mk-product-card__name">{{ card_title }}</p>
+          <div class="mk-product-card__bottom"><span>{{ card_price }}</span><span class="mk-product-card__cart" aria-hidden="true">♧</span></div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki products",
+  "tag": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best sellers" },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all" },
+    { "type": "url", "id": "view_all_link", "label": "View all link" },
+    { "type": "checkbox", "id": "show_heart", "label": "Show wishlist icon", "default": true },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product card",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Shopify product" },
+        { "type": "image_picker", "id": "image", "label": "Fallback image" },
+        { "type": "text", "id": "title", "label": "Fallback title", "default": "Complete majlis seating" },
+        { "type": "text", "id": "price", "label": "Fallback price", "default": "EGP 2,450" },
+        { "type": "url", "id": "link", "label": "Fallback link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki products",
+      "blocks": [
+        { "type": "product", "settings": { "title": "جلسة برية متكاملة", "price": "EGP 2,450" } },
+        { "type": "product", "settings": { "title": "شنطة تخزين كبيرة", "price": "EGP 950" } },
+        { "type": "product", "settings": { "title": "فرشة برية دائرية فاخرة", "price": "EGP 1,750" } },
+        { "type": "product", "settings": { "title": "جلسة طقم متحركة", "price": "EGP 1,950" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

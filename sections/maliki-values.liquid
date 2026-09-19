@@ -1,0 +1,57 @@
+<section class="mk-section mk-values" dir="{{ section.settings.direction }}">
+  <div class="mk-values__inner">
+    <div class="mk-values__intro">
+      <p class="mk-kicker">{{ section.settings.eyebrow }}</p>
+      <h2 class="mk-section-title">{{ section.settings.heading }}</h2>
+      <p class="mk-copy">{{ section.settings.text }}</p>
+    </div>
+    <div class="mk-values__grid">
+      {% for block in section.blocks %}
+        <div class="mk-value" {{ block.shopify_attributes }}>
+          <div class="mk-value__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+          <h3 class="mk-value__title">{{ block.settings.title }}</h3>
+          <p class="mk-value__text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki values",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our values" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Drives Us" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Guided by our heritage, we create products that bring people together." },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon or symbol", "default": "⌂" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Heritage in every detail" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Authentic by design" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki values",
+      "blocks": [
+        { "type": "value", "settings": { "icon": "⌂", "title": "Heritage in Every Detail", "text": "Inspired by a rich cultural legacy" } },
+        { "type": "value", "settings": { "icon": "▣", "title": "Comfort in Every Moment", "text": "Made for memorable gatherings" } },
+        { "type": "value", "settings": { "icon": "▤", "title": "Portability for Modern Life", "text": "Easy to take anywhere" } },
+        { "type": "value", "settings": { "icon": "◆", "title": "Quality You Can Trust", "text": "Designed to last" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

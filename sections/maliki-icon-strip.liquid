@@ -1,0 +1,50 @@
+<section class="mk-section mk-icon-strip" dir="{{ section.settings.direction }}" style="--mk-columns: {{ section.blocks.size }};">
+  <div class="mk-icon-strip__grid">
+    {% for block in section.blocks %}
+      <div class="mk-feature" {{ block.shopify_attributes }}>
+        <div class="mk-feature__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+        <div>
+          <p class="mk-feature__title">{{ block.settings.title }}</p>
+          {% if block.settings.text != blank %}<p class="mk-feature__text">{{ block.settings.text }}</p>{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki icon strip",
+  "tag": "section",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon or symbol", "default": "✦" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Durable Materials" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Built for real adventures" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki icon strip",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "▣", "title": "Easy Transport", "text": "Lightweight & Foldable" } },
+        { "type": "feature", "settings": { "icon": "◆", "title": "Durable Materials", "text": "Built for Real Adventures" } },
+        { "type": "feature", "settings": { "icon": "▲", "title": "Traditional Style", "text": "Authentic Arabic Design" } },
+        { "type": "feature", "settings": { "icon": "◇", "title": "Fast Delivery", "text": "Across Egypt" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

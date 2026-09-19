@@ -1,0 +1,87 @@
+<footer class="mk-footer" style="--mk-gold: {{ section.settings.accent_color }};">
+  <div class="mk-footer__main">
+    <div class="mk-footer__brand">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 220 | image_tag: widths: '95, 160, 220', loading: 'lazy' }}
+      {% else %}
+        <img src="{{ 'maliki-logo.jpg' | asset_url }}" width="108" height="108" alt="{{ shop.name | escape }}" loading="lazy">
+      {% endif %}
+      <p>{{ section.settings.brand_copy | newline_to_br }}</p>
+    </div>
+    <div>
+      <h3>{{ section.settings.menu_heading }}</h3>
+      <ul>
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% else %}
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          <li><a href="/pages/about-us">About Us</a></li>
+          <li><a href="/pages/contact-us">Contact Us</a></li>
+          <li><a href="/policies/shipping-policy">Shipping &amp; Returns</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="mk-footer__contact">
+      <h3>{{ section.settings.contact_heading }}</h3>
+      {% if section.settings.address != blank %}<p>⌖ &nbsp;{{ section.settings.address }}</p>{% endif %}
+      {% if section.settings.phone != blank %}<p>☎ &nbsp;<a href="tel:{{ section.settings.phone | replace: ' ', '' }}">{{ section.settings.phone }}</a></p>{% endif %}
+      {% if section.settings.email != blank %}<p>✉ &nbsp;<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>{% endif %}
+    </div>
+    <div>
+      <h3>{{ section.settings.social_heading }}</h3>
+      <div class="mk-footer__social">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.url | default: '#' }}" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>{{ block.settings.short_label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="mk-footer__bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ section.settings.copyright }}</span>
+    <span>{{ section.settings.bottom_note }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Maliki footer",
+  "tag": "section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "textarea", "id": "brand_copy", "label": "Brand copy", "default": "Authentic Products\nLasting Gatherings" },
+    { "type": "text", "id": "menu_heading", "label": "Menu heading", "default": "Quick Links" },
+    { "type": "link_list", "id": "menu", "label": "Menu" },
+    { "type": "text", "id": "contact_heading", "label": "Contact heading", "default": "Get In Touch" },
+    { "type": "text", "id": "address", "label": "Address", "default": "Cairo, Egypt" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+20 10 1234 5678" },
+    { "type": "text", "id": "email", "label": "Email", "default": "info@maliki-arabic.com" },
+    { "type": "text", "id": "social_heading", "label": "Social heading", "default": "Follow Us" },
+    { "type": "text", "id": "copyright", "label": "Copyright text", "default": "Maliki – For Arabic Heritage. All rights reserved." },
+    { "type": "text", "id": "bottom_note", "label": "Bottom note", "default": "Proudly Egyptian 🇪🇬  |  Heritage Lives On" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#b98a42" }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Accessible label", "default": "Instagram" },
+        { "type": "text", "id": "short_label", "label": "Short label", "default": "ig" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maliki footer",
+      "blocks": [
+        { "type": "social", "settings": { "label": "Facebook", "short_label": "f" } },
+        { "type": "social", "settings": { "label": "Instagram", "short_label": "ig" } },
+        { "type": "social", "settings": { "label": "TikTok", "short_label": "♪" } },
+        { "type": "social", "settings": { "label": "YouTube", "short_label": "▶" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
