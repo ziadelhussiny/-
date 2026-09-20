@@ -4,11 +4,11 @@
       "type": "maliki-hero",
       "settings": {
         "image_position": "center",
-        "direction": "rtl",
+        "direction": "ltr",
         "eyebrow": "",
-        "heading": "جلسات عربية\nبروح أصيلة",
-        "copy": "<p>كل ما تحتاجه لرحلاتك ومناسباتك في مكان واحد</p>",
-        "button_label": "تسوق الآن",
+        "heading": "Authentic Arabian Gatherings\nMade for Every Journey",
+        "copy": "<p>Everything you need for trips and special gatherings, all in one place.</p>",
+        "button_label": "Shop Now",
         "button_style": "gold",
         "height": 430,
         "show_dots": true
@@ -17,72 +17,72 @@
     "benefits": {
       "type": "maliki-icon-strip",
       "blocks": {
-        "b1": { "type": "feature", "settings": { "icon": "▲", "title": "مناسب للبر والرحلات", "text": "مصمم لكل رحلة" } },
-        "b2": { "type": "feature", "settings": { "icon": "◇", "title": "دفع آمن وسهل", "text": "خيارات دفع مرنة" } },
-        "b3": { "type": "feature", "settings": { "icon": "▣", "title": "شحن لجميع المحافظات", "text": "نوصل لباب بيتك" } },
-        "b4": { "type": "feature", "settings": { "icon": "✓", "title": "خامات عالية الجودة", "text": "مختارة بعناية" } }
+        "b1": { "type": "feature", "settings": { "icon": "▲", "title": "Designed for Outdoors", "text": "Ready for every journey" } },
+        "b2": { "type": "feature", "settings": { "icon": "◇", "title": "Secure & Easy Payment", "text": "Flexible payment options" } },
+        "b3": { "type": "feature", "settings": { "icon": "▣", "title": "Nationwide Delivery", "text": "Delivered across Egypt" } },
+        "b4": { "type": "feature", "settings": { "icon": "✓", "title": "Premium Quality", "text": "Carefully selected materials" } }
       },
       "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "direction": "rtl" }
+      "settings": { "direction": "ltr" }
     },
     "categories": {
       "type": "maliki-categories",
       "blocks": {
-        "c1": { "type": "category", "settings": { "title": "جلسات برية" } },
-        "c2": { "type": "category", "settings": { "title": "خيام" } },
-        "c3": { "type": "category", "settings": { "title": "مفارش وسجاد" } },
-        "c4": { "type": "category", "settings": { "title": "شنط وتخزين" } },
-        "c5": { "type": "category", "settings": { "title": "إكسسوارات" } }
+        "c1": { "type": "category", "settings": { "title": "Outdoor Majlis" } },
+        "c2": { "type": "category", "settings": { "title": "Tents" } },
+        "c3": { "type": "category", "settings": { "title": "Rugs & Mats" } },
+        "c4": { "type": "category", "settings": { "title": "Storage Bags" } },
+        "c5": { "type": "category", "settings": { "title": "Accessories" } }
       },
       "block_order": ["c1", "c2", "c3", "c4", "c5"],
-      "settings": { "heading": "تسوق حسب الفئة", "view_all_label": "", "direction": "rtl" }
+      "settings": { "heading": "Shop by Category", "view_all_label": "", "direction": "ltr" }
     },
     "products": {
       "type": "maliki-products",
       "blocks": {
-        "p1": { "type": "product", "settings": { "title": "جلسة برية متكاملة", "price": "EGP 2,450" } },
-        "p2": { "type": "product", "settings": { "title": "شنطة تخزين كبيرة", "price": "EGP 950" } },
-        "p3": { "type": "product", "settings": { "title": "فرشة برية دائرية فاخرة", "price": "EGP 1,750" } },
-        "p4": { "type": "product", "settings": { "title": "جلسة طقم متحركة", "price": "EGP 1,950" } }
+        "p1": { "type": "product", "settings": { "title": "Complete Outdoor Majlis Set", "price": "EGP 2,450" } },
+        "p2": { "type": "product", "settings": { "title": "Large Storage Bag", "price": "EGP 950" } },
+        "p3": { "type": "product", "settings": { "title": "Premium Round Outdoor Mat", "price": "EGP 1,750" } },
+        "p4": { "type": "product", "settings": { "title": "Portable Majlis Set", "price": "EGP 1,950" } }
       },
       "block_order": ["p1", "p2", "p3", "p4"],
-      "settings": { "heading": "الأكثر مبيعاً", "view_all_label": "تسوق الكل", "show_heart": true, "direction": "rtl" }
+      "settings": { "heading": "Best Sellers", "view_all_label": "Shop All", "show_heart": true, "direction": "ltr" }
     },
     "promos": {
       "type": "maliki-promo-grid",
       "blocks": {
-        "pr1": { "type": "promo", "settings": { "heading": "من التراث... إلى رحلات اليوم", "text": "نجمع بين الأصالة والعملية لتبقى كل تجربة فريدة", "button_label": "تعرف علينا", "show_play": false } },
-        "pr2": { "type": "promo", "settings": { "heading": "حكاية تفاصيل تصنع الفرق", "text": "شاهد الفيديو", "button_label": "", "show_play": true } }
+        "pr1": { "type": "promo", "settings": { "heading": "Heritage for Today’s Journeys", "text": "Authentic design and everyday practicality come together in every experience.", "button_label": "Discover Our Story", "show_play": false } },
+        "pr2": { "type": "promo", "settings": { "heading": "Craftsmanship in Every Detail", "text": "Watch the story", "button_label": "", "show_play": true } }
       },
       "block_order": ["pr1", "pr2"],
-      "settings": { "direction": "rtl" }
+      "settings": { "direction": "ltr" }
     },
     "testimonials": {
       "type": "maliki-testimonials",
       "blocks": {
-        "t1": { "type": "testimonial", "settings": { "rating": 5, "quote": "تصاميم جميلة وخامات تراثية أصيلة.", "author": "خالد من الجيزة" } },
-        "t2": { "type": "testimonial", "settings": { "rating": 5, "quote": "منتجات عملية وجميلة ومناسبة للرحلات.", "author": "سارة من الإسكندرية" } },
-        "t3": { "type": "testimonial", "settings": { "rating": 5, "quote": "الجودة ممتازة وخدمة التوصيل سريعة.", "author": "أحمد من القاهرة" } }
+        "t1": { "type": "testimonial", "settings": { "rating": 5, "quote": "Beautiful designs and truly authentic heritage fabrics.", "author": "Khaled, Giza" } },
+        "t2": { "type": "testimonial", "settings": { "rating": 5, "quote": "Practical, beautiful products that are perfect for every trip.", "author": "Sara, Alexandria" } },
+        "t3": { "type": "testimonial", "settings": { "rating": 5, "quote": "Excellent quality and impressively fast delivery.", "author": "Ahmed, Cairo" } }
       },
       "block_order": ["t1", "t2", "t3"],
-      "settings": { "heading": "ماذا يقول عملاؤنا؟", "direction": "rtl" }
+      "settings": { "heading": "What Our Customers Say", "direction": "ltr" }
     },
     "social": {
       "type": "maliki-social-gallery",
       "blocks": {
-        "s1": { "type": "image", "settings": { "label": "جلسة عربية في البر" } },
-        "s2": { "type": "image", "settings": { "label": "خيمة عربية" } },
-        "s3": { "type": "image", "settings": { "label": "مفارش تراثية" } },
-        "s4": { "type": "image", "settings": { "label": "شنطة رحلات" } },
-        "s5": { "type": "image", "settings": { "label": "مجلس عربي" } },
-        "s6": { "type": "image", "settings": { "label": "جلسة خيمة" } }
+        "s1": { "type": "image", "settings": { "label": "Arabian outdoor gathering" } },
+        "s2": { "type": "image", "settings": { "label": "Traditional Arabian tent" } },
+        "s3": { "type": "image", "settings": { "label": "Heritage rugs and textiles" } },
+        "s4": { "type": "image", "settings": { "label": "Portable travel bag" } },
+        "s5": { "type": "image", "settings": { "label": "Authentic majlis seating" } },
+        "s6": { "type": "image", "settings": { "label": "Desert tent gathering" } }
       },
       "block_order": ["s1", "s2", "s3", "s4", "s5", "s6"],
-      "settings": { "heading": "تابعنا على إنستجرام", "direction": "rtl" }
+      "settings": { "heading": "Follow Us on Instagram", "direction": "ltr" }
     },
     "newsletter": {
       "type": "maliki-newsletter",
-      "settings": { "heading": "كن جزءاً من رحلتنا", "text": "اشترك ليصلك كل جديد من منتجاتنا وعروضنا", "placeholder": "البريد الإلكتروني", "button_label": "اشترك الآن", "direction": "rtl" }
+      "settings": { "heading": "Be Part of Our Journey", "text": "Subscribe for new collections, stories and special offers.", "placeholder": "Email address", "button_label": "Subscribe", "direction": "ltr" }
     }
   },
   "order": ["hero", "benefits", "categories", "products", "promos", "testimonials", "social", "newsletter"]

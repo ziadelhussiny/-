@@ -21,7 +21,8 @@
         "social_heading": "Follow Us",
         "copyright": "Maliki – For Arabic Heritage. All rights reserved.",
         "bottom_note": "Proudly Egyptian 🇪🇬  |  Heritage Lives On",
-        "accent_color": "#b98a42"
+        "accent_color": "#b98a42",
+        "direction": "ltr"
       }
     }
   },

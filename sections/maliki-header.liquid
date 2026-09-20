@@ -2,7 +2,7 @@
   assign logo_alt = section.settings.logo.alt | default: shop.name
 %}
 
-<div class="mk-header-shell" style="--mk-red: {{ section.settings.accent_color }}; --mk-red-dark: {{ section.settings.announcement_color }};">
+<div class="mk-header-shell" dir="{{ section.settings.direction }}" style="--mk-red: {{ section.settings.accent_color }}; --mk-red-dark: {{ section.settings.announcement_color }};">
   {% if section.settings.show_announcement %}
     <div class="mk-announcement">
       <span aria-hidden="true">▣</span>
@@ -86,6 +86,10 @@
     { "type": "url", "id": "announcement_link", "label": "Announcement link" },
     { "type": "color", "id": "announcement_color", "label": "Announcement color", "default": "#751019" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#991622" },
+    { "type": "select", "id": "direction", "label": "Layout direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] },
     { "type": "image_picker", "id": "logo", "label": "Logo" },
     { "type": "text", "id": "tagline", "label": "Desktop tagline", "default": "Arabic heritage for a better tomorrow" },
     { "type": "link_list", "id": "menu", "label": "Menu" }
@@ -93,4 +97,3 @@
   "presets": [{ "name": "Maliki header" }]
 }
 {% endschema %}
-

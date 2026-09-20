@@ -1,4 +1,4 @@
-<footer class="mk-footer" style="--mk-gold: {{ section.settings.accent_color }};">
+<footer class="mk-footer" dir="{{ section.settings.direction }}" style="--mk-gold: {{ section.settings.accent_color }};">
   <div class="mk-footer__main">
     <div class="mk-footer__brand">
       {% if section.settings.logo != blank %}
@@ -59,7 +59,11 @@
     { "type": "text", "id": "social_heading", "label": "Social heading", "default": "Follow Us" },
     { "type": "text", "id": "copyright", "label": "Copyright text", "default": "Maliki – For Arabic Heritage. All rights reserved." },
     { "type": "text", "id": "bottom_note", "label": "Bottom note", "default": "Proudly Egyptian 🇪🇬  |  Heritage Lives On" },
-    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#b98a42" }
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#b98a42" },
+    { "type": "select", "id": "direction", "label": "Layout direction", "default": "ltr", "options": [
+      { "value": "ltr", "label": "Left to right" },
+      { "value": "rtl", "label": "Right to left" }
+    ] }
   ],
   "blocks": [
     {
