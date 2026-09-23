@@ -18,6 +18,7 @@
         "heading": "Authentic Arabian Gatherings\nMade for Every Journey",
         "copy": "<p>Everything you need for trips and special gatherings, all in one place.</p>",
         "button_label": "Shop Now",
+        "button_link": "",
         "button_style": "gold",
         "height": 430,
         "show_dots": true
@@ -26,73 +27,358 @@
     "benefits": {
       "type": "maliki-icon-strip",
       "blocks": {
-        "b1": { "type": "feature", "settings": { "icon": "▲", "title": "Designed for Outdoors", "text": "Ready for every journey" } },
-        "b2": { "type": "feature", "settings": { "icon": "◇", "title": "Secure & Easy Payment", "text": "Flexible payment options" } },
-        "b3": { "type": "feature", "settings": { "icon": "▣", "title": "Nationwide Delivery", "text": "Delivered across Egypt" } },
-        "b4": { "type": "feature", "settings": { "icon": "✓", "title": "Premium Quality", "text": "Carefully selected materials" } }
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "icon": "▲",
+            "title": "Designed for Outdoors",
+            "text": "Ready for every journey"
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "icon": "◇",
+            "title": "Secure & Easy Payment",
+            "text": "Flexible payment options"
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "icon": "▣",
+            "title": "Nationwide Delivery",
+            "text": "Delivered across Egypt"
+          }
+        },
+        "b4": {
+          "type": "feature",
+          "settings": {
+            "icon": "✓",
+            "title": "Premium Quality",
+            "text": "Carefully selected materials"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "direction": "ltr" }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "direction": "ltr"
+      }
     },
     "categories": {
       "type": "maliki-categories",
       "blocks": {
-        "c1": { "type": "category", "settings": { "title": "Outdoor Majlis" } },
-        "c2": { "type": "category", "settings": { "title": "Tents" } },
-        "c3": { "type": "category", "settings": { "title": "Rugs & Mats" } },
-        "c4": { "type": "category", "settings": { "title": "Storage Bags" } },
-        "c5": { "type": "category", "settings": { "title": "Accessories" } }
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Outdoor Majlis",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "Tents",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Rugs & Mats",
+            "link": ""
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "Storage Bags",
+            "link": ""
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "Accessories",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5"],
-      "settings": { "heading": "Shop by Category", "view_all_label": "", "direction": "ltr" }
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "heading": "Shop by Category",
+        "view_all_label": "",
+        "view_all_link": "",
+        "direction": "ltr"
+      }
+    },
+    "maliki_categories_BHDye7": {
+      "type": "maliki-categories",
+      "blocks": {
+        "category_apmnNq": {
+          "type": "category",
+          "settings": {
+            "title": "Outdoor Majlis",
+            "link": ""
+          }
+        },
+        "category_M8R8aL": {
+          "type": "category",
+          "settings": {
+            "title": "Tents",
+            "link": ""
+          }
+        },
+        "category_demi8X": {
+          "type": "category",
+          "settings": {
+            "title": "Rugs & Mats",
+            "link": ""
+          }
+        },
+        "category_hYxJJg": {
+          "type": "category",
+          "settings": {
+            "title": "Storage Bags",
+            "link": ""
+          }
+        },
+        "category_3qngTd": {
+          "type": "category",
+          "settings": {
+            "title": "Accessories",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_apmnNq",
+        "category_M8R8aL",
+        "category_demi8X",
+        "category_hYxJJg",
+        "category_3qngTd"
+      ],
+      "settings": {
+        "heading": "",
+        "view_all_label": "",
+        "view_all_link": "",
+        "direction": "ltr"
+      }
     },
     "products": {
       "type": "maliki-products",
       "blocks": {
-        "p1": { "type": "product", "settings": { "title": "Complete Outdoor Majlis Set", "price": "EGP 2,450" } },
-        "p2": { "type": "product", "settings": { "title": "Large Storage Bag", "price": "EGP 950" } },
-        "p3": { "type": "product", "settings": { "title": "Premium Round Outdoor Mat", "price": "EGP 1,750" } },
-        "p4": { "type": "product", "settings": { "title": "Portable Majlis Set", "price": "EGP 1,950" } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "Complete Outdoor Majlis Set",
+            "price": "EGP 2,450",
+            "link": ""
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "Large Storage Bag",
+            "price": "EGP 950",
+            "link": ""
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "Premium Round Outdoor Mat",
+            "price": "EGP 1,750",
+            "link": ""
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "Portable Majlis Set",
+            "price": "EGP 1,950",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"],
-      "settings": { "heading": "Best Sellers", "view_all_label": "Shop All", "show_heart": true, "direction": "ltr" }
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "heading": "Best Sellers",
+        "view_all_label": "Shop All",
+        "view_all_link": "",
+        "show_heart": true,
+        "direction": "ltr"
+      }
     },
     "promos": {
       "type": "maliki-promo-grid",
       "blocks": {
-        "pr1": { "type": "promo", "settings": { "heading": "Heritage for Today’s Journeys", "text": "Authentic design and everyday practicality come together in every experience.", "button_label": "Discover Our Story", "show_play": false } },
-        "pr2": { "type": "promo", "settings": { "heading": "Craftsmanship in Every Detail", "text": "Watch the story", "button_label": "", "show_play": true } }
+        "pr1": {
+          "type": "promo",
+          "settings": {
+            "heading": "Heritage for Today’s Journeys",
+            "text": "Authentic design and everyday practicality come together in every experience.",
+            "button_label": "Discover Our Story",
+            "link": "",
+            "show_play": false
+          }
+        },
+        "pr2": {
+          "type": "promo",
+          "settings": {
+            "heading": "Craftsmanship in Every Detail",
+            "text": "Watch the story",
+            "button_label": "",
+            "link": "",
+            "show_play": true
+          }
+        }
       },
-      "block_order": ["pr1", "pr2"],
-      "settings": { "direction": "ltr" }
+      "block_order": [
+        "pr1",
+        "pr2"
+      ],
+      "settings": {
+        "direction": "ltr"
+      }
     },
     "testimonials": {
       "type": "maliki-testimonials",
       "blocks": {
-        "t1": { "type": "testimonial", "settings": { "rating": 5, "quote": "Beautiful designs and truly authentic heritage fabrics.", "author": "Khaled, Giza" } },
-        "t2": { "type": "testimonial", "settings": { "rating": 5, "quote": "Practical, beautiful products that are perfect for every trip.", "author": "Sara, Alexandria" } },
-        "t3": { "type": "testimonial", "settings": { "rating": 5, "quote": "Excellent quality and impressively fast delivery.", "author": "Ahmed, Cairo" } }
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Beautiful designs and truly authentic heritage fabrics.",
+            "author": "Khaled, Giza"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Practical, beautiful products that are perfect for every trip.",
+            "author": "Sara, Alexandria"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Excellent quality and impressively fast delivery.",
+            "author": "Ahmed, Cairo"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": { "heading": "What Our Customers Say", "direction": "ltr" }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "heading": "What Our Customers Say",
+        "direction": "ltr"
+      }
     },
     "social": {
       "type": "maliki-social-gallery",
       "blocks": {
-        "s1": { "type": "image", "settings": { "label": "Arabian outdoor gathering" } },
-        "s2": { "type": "image", "settings": { "label": "Traditional Arabian tent" } },
-        "s3": { "type": "image", "settings": { "label": "Heritage rugs and textiles" } },
-        "s4": { "type": "image", "settings": { "label": "Portable travel bag" } },
-        "s5": { "type": "image", "settings": { "label": "Authentic majlis seating" } },
-        "s6": { "type": "image", "settings": { "label": "Desert tent gathering" } }
+        "s1": {
+          "type": "image",
+          "settings": {
+            "label": "Arabian outdoor gathering",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "image",
+          "settings": {
+            "label": "Traditional Arabian tent",
+            "link": ""
+          }
+        },
+        "s3": {
+          "type": "image",
+          "settings": {
+            "label": "Heritage rugs and textiles",
+            "link": ""
+          }
+        },
+        "s4": {
+          "type": "image",
+          "settings": {
+            "label": "Portable travel bag",
+            "link": ""
+          }
+        },
+        "s5": {
+          "type": "image",
+          "settings": {
+            "label": "Authentic majlis seating",
+            "link": ""
+          }
+        },
+        "s6": {
+          "type": "image",
+          "settings": {
+            "label": "Desert tent gathering",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4", "s5", "s6"],
-      "settings": { "heading": "Follow Us on Instagram", "direction": "ltr" }
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ],
+      "settings": {
+        "heading": "Follow Us on Instagram",
+        "direction": "ltr"
+      }
     },
     "newsletter": {
       "type": "maliki-newsletter",
-      "settings": { "heading": "Be Part of Our Journey", "text": "Subscribe for new collections, stories and special offers.", "placeholder": "Email address", "button_label": "Subscribe", "direction": "ltr" }
+      "settings": {
+        "heading": "Be Part of Our Journey",
+        "text": "Subscribe for new collections, stories and special offers.",
+        "placeholder": "Email address",
+        "button_label": "Subscribe",
+        "direction": "ltr"
+      }
     }
   },
-  "order": ["hero", "benefits", "categories", "products", "promos", "testimonials", "social", "newsletter"]
+  "order": [
+    "hero",
+    "benefits",
+    "categories",
+    "maliki_categories_BHDye7",
+    "products",
+    "promos",
+    "testimonials",
+    "social",
+    "newsletter"
+  ]
 }

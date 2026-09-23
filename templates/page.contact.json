@@ -18,6 +18,7 @@
         "heading": "Contact Us",
         "copy": "<p>We’re here to help and happy to hear from you. Whether you have a question, need support, or want to learn more about our products, our team is always ready to assist you.</p>",
         "button_label": "",
+        "button_link": "",
         "button_style": "red",
         "height": 320,
         "show_dots": false
@@ -26,15 +27,77 @@
     "hub": {
       "type": "maliki-contact-hub",
       "blocks": {
-        "phone": { "type": "method", "settings": { "icon": "☎", "title": "Phone", "line_1": "+20 10 1234 5678", "line_2": "Sun – Thu · 9 AM – 8 PM" } },
-        "email": { "type": "method", "settings": { "icon": "✉", "title": "Email", "line_1": "info@maliki-arabic.com", "line_2": "We respond within 24 hours" } },
-        "location": { "type": "method", "settings": { "icon": "⌖", "title": "Our Location", "line_1": "Cairo, Egypt", "line_2": "6th of October City" } },
-        "whatsapp": { "type": "method", "settings": { "icon": "◉", "title": "WhatsApp", "line_1": "+20 10 1234 5678", "line_2": "Chat with us directly" } },
-        "faq1": { "type": "faq", "settings": { "question": "What are your working hours?", "answer": "<p>Sunday through Thursday, from 9:00 AM to 8:00 PM.</p>" } },
-        "faq2": { "type": "faq", "settings": { "question": "How long does delivery take?", "answer": "<p>Delivery time depends on your location and the selected product.</p>" } },
-        "faq3": { "type": "faq", "settings": { "question": "Can I customize my majlis set?", "answer": "<p>Yes. Contact our team to discuss fabrics, sizes, and available options.</p>" } }
+        "phone": {
+          "type": "method",
+          "settings": {
+            "icon": "☎",
+            "title": "Phone",
+            "line_1": "+20 10 1234 5678",
+            "line_2": "Sun – Thu · 9 AM – 8 PM",
+            "link": ""
+          }
+        },
+        "email": {
+          "type": "method",
+          "settings": {
+            "icon": "✉",
+            "title": "Email",
+            "line_1": "info@maliki-arabic.com",
+            "line_2": "We respond within 24 hours",
+            "link": ""
+          }
+        },
+        "location": {
+          "type": "method",
+          "settings": {
+            "icon": "⌖",
+            "title": "Our Location",
+            "line_1": "Cairo, Egypt",
+            "line_2": "6th of October City",
+            "link": ""
+          }
+        },
+        "whatsapp": {
+          "type": "method",
+          "settings": {
+            "icon": "◉",
+            "title": "WhatsApp",
+            "line_1": "+20 10 1234 5678",
+            "line_2": "Chat with us directly",
+            "link": ""
+          }
+        },
+        "faq1": {
+          "type": "faq",
+          "settings": {
+            "question": "What are your working hours?",
+            "answer": "<p>Sunday through Thursday, from 9:00 AM to 8:00 PM.</p>"
+          }
+        },
+        "faq2": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Delivery time depends on your location and the selected product.</p>"
+          }
+        },
+        "faq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I customize my majlis set?",
+            "answer": "<p>Yes. Contact our team to discuss fabrics, sizes, and available options.</p>"
+          }
+        }
       },
-      "block_order": ["phone", "email", "location", "whatsapp", "faq1", "faq2", "faq3"],
+      "block_order": [
+        "phone",
+        "email",
+        "location",
+        "whatsapp",
+        "faq1",
+        "faq2",
+        "faq3"
+      ],
       "settings": {
         "direction": "ltr",
         "form_heading": "Send Us a Message",
@@ -52,27 +115,70 @@
     },
     "showroom": {
       "type": "maliki-showroom",
+      "disabled": true,
       "settings": {
         "heading": "Visit Our Showroom",
         "text": "Experience our majlis sets and Arabic heritage collections in person. We’d love to welcome you!",
         "address": "6th of October City, Giza Governorate",
         "hours": "Sun – Thu · 9:00 AM – 8:00 PM",
         "button_label": "Get Directions",
+        "button_link": "",
         "map_label": "Maliki Arabic",
+        "map_link": "",
         "direction": "ltr"
       }
     },
     "benefits": {
       "type": "maliki-icon-strip",
       "blocks": {
-        "b1": { "type": "feature", "settings": { "icon": "▣", "title": "Easy Transport", "text": "Lightweight & Foldable" } },
-        "b2": { "type": "feature", "settings": { "icon": "◆", "title": "Durable Materials", "text": "Built for Real Adventures" } },
-        "b3": { "type": "feature", "settings": { "icon": "▲", "title": "Traditional Style", "text": "Authentic Arabic Design" } },
-        "b4": { "type": "feature", "settings": { "icon": "◇", "title": "Fast Delivery", "text": "Across Egypt" } }
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "icon": "▣",
+            "title": "Easy Transport",
+            "text": "Lightweight & Foldable"
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "icon": "◆",
+            "title": "Durable Materials",
+            "text": "Built for Real Adventures"
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "icon": "▲",
+            "title": "Traditional Style",
+            "text": "Authentic Arabic Design"
+          }
+        },
+        "b4": {
+          "type": "feature",
+          "settings": {
+            "icon": "◇",
+            "title": "Fast Delivery",
+            "text": "Across Egypt"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "direction": "ltr" }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "direction": "ltr"
+      }
     }
   },
-  "order": ["hero", "hub", "showroom", "benefits"]
+  "order": [
+    "hero",
+    "hub",
+    "showroom",
+    "benefits"
+  ]
 }
