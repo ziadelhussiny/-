@@ -20,7 +20,6 @@
         {% else %}
           <img src="{{ 'maliki-logo.jpg' | asset_url }}" width="108" height="108" alt="{{ shop.name | escape }}" loading="eager">
         {% endif %}
-        {% if section.settings.tagline != blank %}<span class="mk-header__tagline">{{ section.settings.tagline }}</span>{% endif %}
       </a>
 
       <nav class="mk-header__nav" aria-label="Primary navigation">
@@ -49,6 +48,8 @@
           <span class="mk-cart-count">{{ cart.item_count }}</span>
         </a>
       </div>
+
+      {% if section.settings.tagline != blank %}<span class="mk-header__tagline">{{ section.settings.tagline }}</span>{% endif %}
     </div>
   </header>
 

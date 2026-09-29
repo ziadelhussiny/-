@@ -115,7 +115,6 @@
     },
     "showroom": {
       "type": "maliki-showroom",
-      "disabled": true,
       "settings": {
         "heading": "Visit Our Showroom",
         "text": "Experience our majlis sets and Arabic heritage collections in person. We’d love to welcome you!",

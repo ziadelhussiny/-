@@ -2,7 +2,7 @@
   <div class="mk-wrap mk-about-story__grid">
     <div class="mk-about-story__panel mk-about-story__text">
       <p class="mk-kicker">{{ section.settings.story_eyebrow }}</p>
-      <h2 class="mk-section-title">{{ section.settings.story_heading }}</h2>
+      <h2 class="mk-section-title">{{ section.settings.story_heading | newline_to_br }}</h2>
       <div class="mk-copy">{{ section.settings.story_text }}</div>
       {% if section.settings.signature != blank %}<span class="mk-signature">{{ section.settings.signature }}</span>{% endif %}
     </div>
@@ -77,4 +77,3 @@
   ]
 }
 {% endschema %}
-

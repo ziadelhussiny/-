@@ -20,7 +20,7 @@
   <div class="mk-hero__content">
     <div class="mk-hero__content-inner">
       {% if section.settings.eyebrow != blank %}<p class="mk-kicker mk-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-      {% if section.settings.heading != blank %}<h1 class="mk-title">{{ section.settings.heading }}</h1>{% endif %}
+      {% if section.settings.heading != blank %}<h1 class="mk-title">{{ section.settings.heading | newline_to_br }}</h1>{% endif %}
       {% if section.settings.copy != blank %}<div class="mk-hero__copy">{{ section.settings.copy }}</div>{% endif %}
       {% if section.settings.button_label != blank %}
         <a class="mk-button {% if section.settings.button_style == 'gold' %}mk-button--gold{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
@@ -61,4 +61,3 @@
   "presets": [{ "name": "Maliki hero" }]
 }
 {% endschema %}
-

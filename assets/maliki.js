@@ -5,7 +5,11 @@ class MalikiCarousel extends HTMLElement {
       button.addEventListener('click', () => {
         if (!this.track) return;
         const direction = Number(button.dataset.mkScroll || 1);
-        this.track.scrollBy({ left: direction * this.track.clientWidth * 0.72, behavior: 'smooth' });
+        const directionFactor = getComputedStyle(this).direction === 'rtl' ? -1 : 1;
+        this.track.scrollBy({
+          left: direction * directionFactor * this.track.clientWidth * 0.72,
+          behavior: 'smooth',
+        });
       });
     });
   }
@@ -23,4 +27,3 @@ document.addEventListener('click', (event) => {
   drawer.hidden = !open;
   document.documentElement.classList.toggle('mk-menu-is-open', open);
 });
-

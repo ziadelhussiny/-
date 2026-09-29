@@ -123,59 +123,6 @@
         "direction": "ltr"
       }
     },
-    "maliki_categories_BHDye7": {
-      "type": "maliki-categories",
-      "blocks": {
-        "category_apmnNq": {
-          "type": "category",
-          "settings": {
-            "title": "Outdoor Majlis",
-            "link": ""
-          }
-        },
-        "category_M8R8aL": {
-          "type": "category",
-          "settings": {
-            "title": "Tents",
-            "link": ""
-          }
-        },
-        "category_demi8X": {
-          "type": "category",
-          "settings": {
-            "title": "Rugs & Mats",
-            "link": ""
-          }
-        },
-        "category_hYxJJg": {
-          "type": "category",
-          "settings": {
-            "title": "Storage Bags",
-            "link": ""
-          }
-        },
-        "category_3qngTd": {
-          "type": "category",
-          "settings": {
-            "title": "Accessories",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "category_apmnNq",
-        "category_M8R8aL",
-        "category_demi8X",
-        "category_hYxJJg",
-        "category_3qngTd"
-      ],
-      "settings": {
-        "heading": "",
-        "view_all_label": "",
-        "view_all_link": "",
-        "direction": "ltr"
-      }
-    },
     "products": {
       "type": "maliki-products",
       "blocks": {
@@ -374,7 +321,6 @@
     "hero",
     "benefits",
     "categories",
-    "maliki_categories_BHDye7",
     "products",
     "promos",
     "testimonials",
