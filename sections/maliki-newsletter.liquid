@@ -1,17 +1,13 @@
-<section class="mk-section mk-newsletter" dir="{{ section.settings.direction }}">
-  {% if section.settings.image != blank %}
-    {{ section.settings.image | image_url: width: 2200 | image_tag: widths: '750, 1400, 2200', loading: 'lazy', alt: section.settings.heading }}
-  {% else %}
-    <img src="{{ 'maliki-journey.png' | asset_url }}" width="1536" height="864" loading="lazy" alt="">
-  {% endif %}
-  <h2 class="mk-newsletter__title">{{ section.settings.heading }}</h2>
-  {% if section.settings.text != blank %}<p class="mk-newsletter__copy">{{ section.settings.text }}</p>{% endif %}
-  {% form 'customer', class: 'mk-newsletter__form' %}
+<section class="mk-section mk-paper mk-newsletter-shell" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap mk-newsletter">
+    <div><h2 class="mk-newsletter__title">{{ section.settings.heading }}</h2>{% if section.settings.text != blank %}<p class="mk-newsletter__copy">{{ section.settings.text }}</p>{% endif %}</div>
+    {% form 'customer', class: 'mk-newsletter__form' %}
     <input type="hidden" name="contact[tags]" value="newsletter">
     <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ section.settings.placeholder }}</label>
     <input id="NewsletterEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" placeholder="{{ section.settings.placeholder }}" required autocomplete="email">
     <button type="submit">{{ section.settings.button_label }}</button>
-  {% endform %}
+    {% endform %}
+  </div>
 </section>
 
 {% schema %}

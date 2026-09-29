@@ -1,12 +1,12 @@
 <section class="mk-section mk-paper mk-testimonials" dir="{{ section.settings.direction }}">
   <div class="mk-wrap">
-    <div class="mk-section-heading"><h2 class="mk-section-title mk-heading-line">{{ section.settings.heading }}</h2></div>
+    <div class="mk-section-heading mk-section-heading--center"><div><p class="mk-kicker">{{ section.settings.eyebrow }}</p><h2 class="mk-section-title">{{ section.settings.heading }}</h2></div></div>
     <div class="mk-testimonial-grid">
       {% for block in section.blocks %}
         <article class="mk-quote" {{ block.shopify_attributes }}>
           <div class="mk-stars" aria-label="{{ block.settings.rating }} out of 5 stars">{% for i in (1..block.settings.rating) %}★{% endfor %}</div>
           <blockquote>“{{ block.settings.quote }}”</blockquote>
-          <cite>{{ block.settings.author }}</cite>
+          <footer><span class="mk-quote__avatar">{{ block.settings.initials }}</span><cite><strong>{{ block.settings.author }}</strong><small>{{ block.settings.location }}</small></cite>{% if block.settings.verified %}<em>✓ Verified</em>{% endif %}</footer>
         </article>
       {% endfor %}
     </div>
@@ -19,6 +19,7 @@
   "tag": "section",
   "max_blocks": 6,
   "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What our customers say" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "What our customers say" },
     { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
       { "value": "ltr", "label": "Left to right" },
@@ -32,7 +33,10 @@
       "settings": [
         { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
         { "type": "textarea", "id": "quote", "label": "Quote", "default": "Beautiful authentic design and excellent quality." },
-        { "type": "text", "id": "author", "label": "Author", "default": "Verified customer" }
+        { "type": "text", "id": "initials", "label": "Initials", "default": "SA" },
+        { "type": "text", "id": "author", "label": "Author", "default": "Verified customer" },
+        { "type": "text", "id": "location", "label": "Location", "default": "Cairo" },
+        { "type": "checkbox", "id": "verified", "label": "Verified purchase", "default": true }
       ]
     }
   ],

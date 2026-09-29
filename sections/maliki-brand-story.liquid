@@ -1,0 +1,57 @@
+<section class="mk-section mk-paper mk-brand-story" dir="{{ section.settings.direction }}">
+  <div class="mk-wrap mk-brand-story__grid">
+    <div class="mk-brand-story__media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: widths: '640, 960, 1400, 1800', sizes: '(max-width: 749px) 100vw, 50vw', loading: 'lazy', alt: section.settings.heading }}
+      {% else %}
+        <img src="{{ 'maliki-journey.png' | asset_url }}" width="1672" height="941" loading="lazy" alt="{{ section.settings.heading | escape }}">
+      {% endif %}
+      {% if section.settings.badge != blank %}<span class="mk-brand-story__badge">{{ section.settings.badge }}</span>{% endif %}
+    </div>
+    <div class="mk-brand-story__content">
+      <p class="mk-kicker">{{ section.settings.eyebrow }}</p>
+      <h2 class="mk-section-title">{{ section.settings.heading | newline_to_br }}</h2>
+      <div class="mk-brand-story__text">{{ section.settings.text }}</div>
+      <div class="mk-brand-story__stats">
+        {% for block in section.blocks %}{% if block.type == 'stat' %}<div {{ block.shopify_attributes }}><strong>{{ block.settings.value }}</strong><span>{{ block.settings.label }}</span></div>{% endif %}{% endfor %}
+      </div>
+      <ul class="mk-brand-story__points">
+        {% for block in section.blocks %}{% if block.type == 'point' %}<li {{ block.shopify_attributes }}><span aria-hidden="true">✓</span>{{ block.settings.text }}</li>{% endif %}{% endfor %}
+      </ul>
+      {% if section.settings.button_label != blank %}<a class="mk-button" href="{{ section.settings.button_link | default: '/pages/about-us' }}">{{ section.settings.button_label }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Maliki brand story",
+  "tag": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Story image" },
+    { "type": "text", "id": "badge", "label": "Image badge", "default": "Our Story" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Heritage for today’s journeys" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Rooted in Tradition.\nBuilt to Travel." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Malik Arabic brings the beauty of the Arabian majlis to modern life — premium, portable and made for every gathering.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Discover Our Story" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [{ "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }] }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Statistic", "settings": [{ "type": "text", "id": "value", "label": "Value", "default": "5,000+" }, { "type": "text", "id": "label", "label": "Label", "default": "Journeys equipped" }] },
+    { "type": "point", "name": "Craft point", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Hand-finished kilim upholstery & embroidery" }] }
+  ],
+  "presets": [{
+    "name": "Maliki brand story",
+    "blocks": [
+      { "type": "stat", "settings": { "value": "5,000+", "label": "Journeys equipped" } },
+      { "type": "stat", "settings": { "value": "27", "label": "Governorates served" } },
+      { "type": "stat", "settings": { "value": "98%", "label": "Positive reviews" } },
+      { "type": "point", "settings": { "text": "Hand-finished kilim upholstery & embroidery" } },
+      { "type": "point", "settings": { "text": "Packs down in minutes — carries like luggage" } },
+      { "type": "point", "settings": { "text": "Weather-treated canvas & hardwood frames" } }
+    ]
+  }]
+}
+{% endschema %}

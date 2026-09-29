@@ -30,12 +30,25 @@ test('the original Maliki logo is the header and footer fallback', async () => {
   }
 });
 
-test('desktop header keeps the logo, navigation, actions, and tagline in the reference order', async () => {
+test('desktop header keeps the logo, search, actions, and category navigation in the reference order', async () => {
   const header = await readFile(path.join(root, 'sections', 'maliki-header.liquid'), 'utf8');
   const brand = header.match(/<a class="mk-header__brand"[\s\S]*?<\/a>/)?.[0] ?? '';
 
   assert.doesNotMatch(brand, /mk-header__tagline/);
-  assert.match(header, /mk-header__actions[\s\S]*?section\.settings\.tagline/);
+  assert.match(brand, /section\.settings\.tagline/);
+  assert.ok(header.indexOf('mk-header__brand') < header.indexOf('mk-header__search'));
+  assert.ok(header.indexOf('mk-header__search') < header.indexOf('mk-header__actions'));
+  assert.ok(header.indexOf('mk-header__actions') < header.indexOf('mk-header__category-nav'));
+});
+
+test('the storefront header exposes the reference search and utility navigation layers', async () => {
+  const header = await readFile(path.join(root, 'sections', 'maliki-header.liquid'), 'utf8');
+
+  assert.match(header, /class="mk-header__search"/);
+  assert.match(header, /name="q"/);
+  assert.match(header, /class="mk-header__category-nav"/);
+  assert.match(header, /Wishlist/);
+  assert.match(header, /Track Order/);
 });
 
 test('desktop composition leaves enough viewport gutter for carousel controls', async () => {
@@ -86,7 +99,8 @@ test('reference pages use the intended Shopify section structure exactly once', 
       'maliki-icon-strip',
       'maliki-categories',
       'maliki-products',
-      'maliki-promo-grid',
+      'maliki-seasonal-offer',
+      'maliki-brand-story',
       'maliki-testimonials',
       'maliki-social-gallery',
       'maliki-newsletter',
@@ -122,6 +136,33 @@ test('reference pages use the intended Shopify section structure exactly once', 
   }
 });
 
+test('the home hero includes two calls to action and trust statistics', async () => {
+  const hero = await readFile(path.join(root, 'sections', 'maliki-hero.liquid'), 'utf8');
+  const home = await readShopifyJson('templates/index.json');
+  const heroConfig = home.sections.hero;
+
+  assert.match(hero, /secondary_button_label/);
+  assert.match(hero, /for block in section\.blocks/);
+  assert.equal(heroConfig.blocks && Object.keys(heroConfig.blocks).length, 3);
+});
+
+test('home fallback catalogue photography is large enough for crisp responsive cards', async () => {
+  const names = [
+    'maliki-catalog-seating.png',
+    'maliki-catalog-tent.png',
+    'maliki-catalog-rugs.png',
+    'maliki-catalog-storage.png',
+    'maliki-catalog-accessories.png',
+  ];
+
+  for (const name of names) {
+    const source = await readFile(path.join(root, 'assets', name));
+    assert.equal(source.toString('ascii', 1, 4), 'PNG', `${name} should be a PNG asset`);
+    assert.ok(source.readUInt32BE(16) >= 1200, `${name} should be at least 1200px wide`);
+    assert.ok(source.readUInt32BE(20) >= 800, `${name} should be at least 800px high`);
+  }
+});
+
 test('multiline design headings preserve their authored line breaks', async () => {
   const hero = await readFile(path.join(root, 'sections', 'maliki-hero.liquid'), 'utf8');
   const about = await readFile(path.join(root, 'sections', 'maliki-about-story.liquid'), 'utf8');
@@ -134,4 +175,10 @@ test('category carousel movement respects LTR and RTL direction', async () => {
   const script = await readFile(path.join(root, 'assets', 'maliki.js'), 'utf8');
   assert.match(script, /getComputedStyle\(this\)\.direction/);
   assert.match(script, /directionFactor/);
+});
+
+test('mobile menu keeps aria state in sync and closes with Escape', async () => {
+  const script = await readFile(path.join(root, 'assets', 'maliki.js'), 'utf8');
+  assert.match(script, /setAttribute\('aria-expanded'/);
+  assert.match(script, /event\.key === 'Escape'/);
 });

@@ -5,70 +5,67 @@
 <div class="mk-header-shell" dir="{{ section.settings.direction }}" style="--mk-red: {{ section.settings.accent_color }}; --mk-red-dark: {{ section.settings.announcement_color }};">
   {% if section.settings.show_announcement %}
     <div class="mk-announcement">
-      <span aria-hidden="true">▣</span>
-      {% if section.settings.announcement_link != blank %}<a href="{{ section.settings.announcement_link }}">{% endif %}
-      {{ section.settings.announcement_text }}
-      {% if section.settings.announcement_link != blank %}</a>{% endif %}
+      <div class="mk-announcement__inner">
+        <span class="mk-announcement__delivery">● {{ section.settings.delivery_text }}</span>
+        <span class="mk-announcement__offer">
+          {% if section.settings.announcement_link != blank %}<a href="{{ section.settings.announcement_link }}">{% endif %}
+          {{ section.settings.announcement_text }}
+          {% if section.settings.announcement_link != blank %}</a>{% endif %}
+        </span>
+        <span class="mk-announcement__utility">
+          {% if section.settings.track_link != blank %}<a href="{{ section.settings.track_link }}">{{ section.settings.track_label }}</a>{% else %}{{ section.settings.track_label }}{% endif %}
+          <span aria-hidden="true">·</span><span>{{ section.settings.locale_label }}</span><span aria-hidden="true">·</span><span>{{ section.settings.currency_label }}</span>
+        </span>
+      </div>
     </div>
   {% endif %}
 
   <header class="mk-header">
     <div class="mk-header__inner">
-      <a class="mk-header__brand" href="{{ routes.root_url }}">
-        {% if section.settings.logo != blank %}
-          {{ section.settings.logo | image_url: width: 220 | image_tag: widths: '90, 140, 220', alt: logo_alt, loading: 'eager' }}
-        {% else %}
-          <img src="{{ 'maliki-logo.jpg' | asset_url }}" width="108" height="108" alt="{{ shop.name | escape }}" loading="eager">
-        {% endif %}
-      </a>
-
-      <nav class="mk-header__nav" aria-label="Primary navigation">
-        {% for link in section.settings.menu.links %}
-          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
-        {% else %}
-          <a href="{{ routes.root_url }}">Home</a>
-          <a href="/pages/about-us">About Us</a>
-          <a href="/pages/contact-us">Contact Us</a>
-        {% endfor %}
-      </nav>
-
-      <button class="mk-menu-button" type="button" aria-label="Open menu" data-mk-menu-open>
+      <button class="mk-menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-mk-menu-open>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
 
-      <div class="mk-header__actions">
-        <a class="mk-icon-link mk-search-link" href="{{ routes.search_url }}" aria-label="Search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
-        </a>
-        <a class="mk-icon-link mk-account-link" href="{{ routes.account_url }}" aria-label="Account">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 3.5-6.4 8-6.4s7.2 2.2 8 6.4"/></svg>
-        </a>
-        <a class="mk-icon-link" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L20.5 7H5.2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-          <span class="mk-cart-count">{{ cart.item_count }}</span>
-        </a>
-      </div>
+      <a class="mk-header__brand" href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 220 | image_tag: widths: '96, 144, 220', alt: logo_alt, loading: 'eager' }}
+        {% else %}
+          <img src="{{ 'maliki-logo.jpg' | asset_url }}" width="100" height="100" alt="{{ shop.name | escape }}" loading="eager">
+        {% endif %}
+        <span class="mk-header__brand-copy"><strong>{{ section.settings.brand_name }}</strong><small>{{ section.settings.tagline }}</small></span>
+      </a>
 
-      {% if section.settings.tagline != blank %}<span class="mk-header__tagline">{{ section.settings.tagline }}</span>{% endif %}
+      <form class="mk-header__search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="MalikiSearch-{{ section.id }}">Search</label>
+        <input id="MalikiSearch-{{ section.id }}" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ section.settings.search_placeholder }}" autocomplete="off">
+        <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></button>
+      </form>
+
+      <div class="mk-header__actions">
+        <a class="mk-icon-link mk-search-link" href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></a>
+        <a class="mk-icon-link mk-account-link" href="{{ routes.account_url }}" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 3.5-6.4 8-6.4s7.2 2.2 8 6.4"/></svg><span>Account</span></a>
+        <a class="mk-icon-link mk-wishlist-link" href="{{ section.settings.wishlist_link | default: routes.all_products_collection_url }}" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg><span>Wishlist</span></a>
+        <a class="mk-icon-link mk-cart-link" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L20.5 7H5.2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Cart</span><b class="mk-cart-count">{{ cart.item_count }}</b></a>
+      </div>
     </div>
+
+    <nav class="mk-header__category-nav" aria-label="Primary navigation">
+      <div class="mk-header__category-nav-inner">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% else %}
+          <a href="{{ routes.root_url }}" aria-current="page">Home</a><a href="{{ routes.all_products_collection_url }}">Shop All</a><a href="{{ routes.collections_url }}">Outdoor Majlis</a><a href="{{ routes.collections_url }}">Tents</a><a href="{{ routes.collections_url }}">Rugs & Mats</a><a href="{{ routes.collections_url }}">Storage</a><a href="{{ routes.collections_url }}">Accessories</a><a href="{{ routes.all_products_collection_url }}">Sale</a><span class="mk-header__nav-spacer"></span><a href="/pages/about-us">About Us</a><a href="/pages/contact-us">Contact</a>
+        {% endfor %}
+      </div>
+    </nav>
   </header>
 
   <div class="mk-mobile-menu" data-mk-menu hidden>
     <div class="mk-mobile-menu__panel">
-      <div class="mk-mobile-menu__top">
-        <strong>{{ shop.name }}</strong>
-        <button class="mk-menu-button" type="button" aria-label="Close menu" data-mk-menu-close>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
-        </button>
-      </div>
+      <div class="mk-mobile-menu__top"><strong>{{ section.settings.brand_name }}</strong><button class="mk-menu-button" type="button" aria-label="Close menu" data-mk-menu-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
+      <form class="mk-mobile-menu__search" action="{{ routes.search_url }}" method="get" role="search"><input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" aria-label="Search"><button type="submit" aria-label="Search">→</button></form>
       <nav class="mk-mobile-menu__links" aria-label="Mobile navigation">
-        {% for link in section.settings.menu.links %}
-          <a href="{{ link.url }}">{{ link.title }}</a>
-        {% else %}
-          <a href="{{ routes.root_url }}">Home</a>
-          <a href="/pages/about-us">About Us</a>
-          <a href="/pages/contact-us">Contact Us</a>
-        {% endfor %}
+        {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% else %}<a href="{{ routes.root_url }}">Home</a><a href="{{ routes.all_products_collection_url }}">Shop All</a><a href="{{ routes.collections_url }}">Outdoor Majlis</a><a href="{{ routes.collections_url }}">Heritage Tents</a><a href="{{ routes.collections_url }}">Rugs & Mats</a><a href="{{ routes.collections_url }}">Storage Bags</a><a href="/pages/about-us">About Us</a><a href="/pages/contact-us">Contact</a>{% endfor %}
       </nav>
     </div>
     <button type="button" aria-label="Close menu" data-mk-menu-close></button>
@@ -83,17 +80,22 @@
   "enabled_on": { "groups": ["header"] },
   "settings": [
     { "type": "checkbox", "id": "show_announcement", "label": "Show announcement", "default": true },
-    { "type": "text", "id": "announcement_text", "label": "Announcement", "default": "Free Shipping Across Egypt On Orders Over EGP 2,000" },
+    { "type": "text", "id": "delivery_text", "label": "Delivery note", "default": "Delivering across Egypt" },
+    { "type": "text", "id": "announcement_text", "label": "Announcement", "default": "Free shipping on orders over EGP 2,000 · Use code HERITAGE10 for 10% off" },
     { "type": "url", "id": "announcement_link", "label": "Announcement link" },
-    { "type": "color", "id": "announcement_color", "label": "Announcement color", "default": "#751019" },
-    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#991622" },
-    { "type": "select", "id": "direction", "label": "Layout direction", "default": "ltr", "options": [
-      { "value": "ltr", "label": "Left to right" },
-      { "value": "rtl", "label": "Right to left" }
-    ] },
+    { "type": "text", "id": "track_label", "label": "Track order label", "default": "Track Order" },
+    { "type": "url", "id": "track_link", "label": "Track order link" },
+    { "type": "text", "id": "locale_label", "label": "Locale label", "default": "EN / AR" },
+    { "type": "text", "id": "currency_label", "label": "Currency label", "default": "EGP" },
+    { "type": "color", "id": "announcement_color", "label": "Announcement color", "default": "#3d0907" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#7b1711" },
+    { "type": "select", "id": "direction", "label": "Layout direction", "default": "ltr", "options": [{ "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }] },
     { "type": "image_picker", "id": "logo", "label": "Logo" },
-    { "type": "text", "id": "tagline", "label": "Desktop tagline", "default": "Arabic heritage for a better tomorrow" },
-    { "type": "link_list", "id": "menu", "label": "Menu" }
+    { "type": "text", "id": "brand_name", "label": "Brand name", "default": "Malik Arabic" },
+    { "type": "text", "id": "tagline", "label": "Brand tagline", "default": "Heritage · Everywhere" },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search majlis sets, tents, rugs..." },
+    { "type": "url", "id": "wishlist_link", "label": "Wishlist link" },
+    { "type": "link_list", "id": "menu", "label": "Category menu" }
   ],
   "presets": [{ "name": "Maliki header" }]
 }

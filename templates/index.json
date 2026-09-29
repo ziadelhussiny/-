@@ -11,17 +11,27 @@
   "sections": {
     "hero": {
       "type": "maliki-hero",
+      "blocks": {
+        "stat1": { "type": "stat", "settings": { "value": "4.9★", "label": "480+ verified reviews" } },
+        "stat2": { "type": "stat", "settings": { "value": "5,000+", "label": "Journeys equipped" } },
+        "stat3": { "type": "stat", "settings": { "value": "14D", "label": "Easy returns" } }
+      },
+      "block_order": ["stat1", "stat2", "stat3"],
       "settings": {
-        "image_position": "center",
+        "image_position": "right center",
         "direction": "ltr",
-        "eyebrow": "",
-        "heading": "Authentic Arabian Gatherings\nMade for Every Journey",
-        "copy": "<p>Everything you need for trips and special gatherings, all in one place.</p>",
-        "button_label": "Shop Now",
+        "eyebrow": "Authentic Arabian Gatherings",
+        "heading": "Heritage You Can Carry.\nComfort Everywhere.",
+        "copy": "<p>Premium portable majlis seating, heritage tents and desert essentials — crafted for journeys, gatherings and the moments in between.</p>",
+        "button_label": "Shop Best Sellers",
         "button_link": "",
+        "secondary_button_label": "Explore Heritage Tents",
+        "secondary_button_link": "",
         "button_style": "gold",
-        "height": 430,
-        "show_dots": true
+        "height": 610,
+        "overlay_strength": 70,
+        "show_stats": true,
+        "show_dots": false
       }
     },
     "benefits": {
@@ -77,6 +87,7 @@
           "type": "category",
           "settings": {
             "title": "Outdoor Majlis",
+            "subtitle": "From EGP 1,650",
             "link": ""
           }
         },
@@ -84,6 +95,7 @@
           "type": "category",
           "settings": {
             "title": "Tents",
+            "subtitle": "From EGP 1,000",
             "link": ""
           }
         },
@@ -91,6 +103,7 @@
           "type": "category",
           "settings": {
             "title": "Rugs & Mats",
+            "subtitle": "From EGP 450",
             "link": ""
           }
         },
@@ -98,6 +111,7 @@
           "type": "category",
           "settings": {
             "title": "Storage Bags",
+            "subtitle": "From EGP 500",
             "link": ""
           }
         },
@@ -105,6 +119,7 @@
           "type": "category",
           "settings": {
             "title": "Accessories",
+            "subtitle": "From EGP 250",
             "link": ""
           }
         }
@@ -117,8 +132,9 @@
         "c5"
       ],
       "settings": {
-        "heading": "Shop by Category",
-        "view_all_label": "",
+        "eyebrow": "Shop by Category",
+        "heading": "Everything for the Journey",
+        "view_all_label": "View All",
         "view_all_link": "",
         "direction": "ltr"
       }
@@ -131,7 +147,12 @@
           "settings": {
             "product": "",
             "title": "Complete Outdoor Majlis Set",
-            "price": "EGP 2,450",
+            "price": "EGP 2,800",
+            "compare_price": "EGP 3,500",
+            "saving": "Save 20%",
+            "badge": "-20%",
+            "rating": "4.9",
+            "review_count": "87",
             "link": ""
           }
         },
@@ -139,8 +160,13 @@
           "type": "product",
           "settings": {
             "product": "",
-            "title": "Large Storage Bag",
-            "price": "EGP 950",
+            "title": "Portable Majlis Set",
+            "price": "EGP 1,950",
+            "compare_price": "",
+            "saving": "",
+            "badge": "Best Seller",
+            "rating": "4.9",
+            "review_count": "113",
             "link": ""
           }
         },
@@ -149,7 +175,12 @@
           "settings": {
             "product": "",
             "title": "Premium Round Outdoor Mat",
-            "price": "EGP 1,750",
+            "price": "EGP 2,750",
+            "compare_price": "EGP 3,200",
+            "saving": "Save 14%",
+            "badge": "-14%",
+            "rating": "4.7",
+            "review_count": "52",
             "link": ""
           }
         },
@@ -157,8 +188,13 @@
           "type": "product",
           "settings": {
             "product": "",
-            "title": "Portable Majlis Set",
-            "price": "EGP 1,950",
+            "title": "Large Heritage Storage Bag",
+            "price": "EGP 800",
+            "compare_price": "",
+            "saving": "",
+            "badge": "",
+            "rating": "4.8",
+            "review_count": "64",
             "link": ""
           }
         }
@@ -170,6 +206,7 @@
         "p4"
       ],
       "settings": {
+        "eyebrow": "Loved by Travellers",
         "heading": "Best Sellers",
         "view_all_label": "Shop All",
         "view_all_link": "",
@@ -177,35 +214,40 @@
         "direction": "ltr"
       }
     },
-    "promos": {
-      "type": "maliki-promo-grid",
-      "blocks": {
-        "pr1": {
-          "type": "promo",
-          "settings": {
-            "heading": "Heritage for Today’s Journeys",
-            "text": "Authentic design and everyday practicality come together in every experience.",
-            "button_label": "Discover Our Story",
-            "link": "",
-            "show_play": false
-          }
-        },
-        "pr2": {
-          "type": "promo",
-          "settings": {
-            "heading": "Craftsmanship in Every Detail",
-            "text": "Watch the story",
-            "button_label": "",
-            "link": "",
-            "show_play": true
-          }
-        }
-      },
-      "block_order": [
-        "pr1",
-        "pr2"
-      ],
+    "seasonal": {
+      "type": "maliki-seasonal-offer",
       "settings": {
+        "eyebrow": "Limited Offer",
+        "heading": "Heritage Tent of the Season",
+        "text": "The Arabic majlis tent — now 50% off. Limited stock, endless gatherings.",
+        "show_timer": true,
+        "days": "02",
+        "hours": "14",
+        "minutes": "36",
+        "seconds": "22",
+        "button_label": "Grab the Deal",
+        "button_link": "",
+        "direction": "ltr"
+      }
+    },
+    "story": {
+      "type": "maliki-brand-story",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "5,000+", "label": "Journeys equipped" } },
+        "s2": { "type": "stat", "settings": { "value": "27", "label": "Governorates served" } },
+        "s3": { "type": "stat", "settings": { "value": "98%", "label": "Positive reviews" } },
+        "p1": { "type": "point", "settings": { "text": "Hand-finished kilim upholstery & embroidery" } },
+        "p2": { "type": "point", "settings": { "text": "Packs down in minutes — carries like luggage" } },
+        "p3": { "type": "point", "settings": { "text": "Weather-treated canvas & hardwood frames" } }
+      },
+      "block_order": ["s1", "s2", "s3", "p1", "p2", "p3"],
+      "settings": {
+        "badge": "Our Story",
+        "eyebrow": "Heritage for Today’s Journeys",
+        "heading": "Rooted in Tradition.\nBuilt to Travel.",
+        "text": "<p>Malik Arabic brings the beauty of the Arabian majlis to modern life — premium, portable and made for every gathering.</p>",
+        "button_label": "Discover Our Story",
+        "button_link": "",
         "direction": "ltr"
       }
     },
@@ -243,7 +285,8 @@
         "t3"
       ],
       "settings": {
-        "heading": "What Our Customers Say",
+        "eyebrow": "What Our Customers Say",
+        "heading": "Reviews from the Field",
         "direction": "ltr"
       }
     },
@@ -302,7 +345,10 @@
         "s6"
       ],
       "settings": {
+        "eyebrow": "@malikarabic",
         "heading": "Follow Us on Instagram",
+        "follow_label": "Follow",
+        "follow_link": "",
         "direction": "ltr"
       }
     },
@@ -322,7 +368,8 @@
     "benefits",
     "categories",
     "products",
-    "promos",
+    "seasonal",
+    "story",
     "testimonials",
     "social",
     "newsletter"

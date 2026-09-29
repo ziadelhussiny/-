@@ -15,13 +15,21 @@
       "type": "maliki-header",
       "settings": {
         "show_announcement": true,
-        "announcement_text": "Free Shipping Across Egypt On Orders Over EGP 2,000",
+        "delivery_text": "Delivering across Egypt",
+        "announcement_text": "Free shipping on orders over EGP 2,000 · Use code HERITAGE10 for 10% off",
         "announcement_link": "",
-        "announcement_color": "#751019",
-        "accent_color": "#991622",
+        "track_label": "Track Order",
+        "track_link": "",
+        "locale_label": "EN / AR",
+        "currency_label": "EGP",
+        "announcement_color": "#3d0907",
+        "accent_color": "#7b1711",
         "direction": "ltr",
-        "tagline": "Arabic heritage for a better tomorrow",
-        "menu": "main-menu"
+        "brand_name": "Malik Arabic",
+        "tagline": "Heritage · Everywhere",
+        "search_placeholder": "Search majlis sets, tents, rugs...",
+        "wishlist_link": "",
+        "menu": ""
       }
     }
   },

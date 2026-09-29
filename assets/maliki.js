@@ -17,13 +17,27 @@ class MalikiCarousel extends HTMLElement {
 
 if (!customElements.get('maliki-carousel')) customElements.define('maliki-carousel', MalikiCarousel);
 
+const menuDrawer = document.querySelector('[data-mk-menu]');
+const menuOpener = document.querySelector('[data-mk-menu-open]');
+
+function setMenuOpen(open) {
+  if (!menuDrawer) return;
+  menuDrawer.hidden = !open;
+  menuOpener?.setAttribute('aria-expanded', String(open));
+  document.documentElement.classList.toggle('mk-menu-is-open', open);
+  if (open) menuDrawer.querySelector('[data-mk-menu-close]')?.focus();
+  else menuOpener?.focus();
+}
+
 document.addEventListener('click', (event) => {
   const opener = event.target.closest('[data-mk-menu-open]');
   const closer = event.target.closest('[data-mk-menu-close]');
   const drawer = document.querySelector('[data-mk-menu]');
   if (!drawer || (!opener && !closer)) return;
 
-  const open = Boolean(opener);
-  drawer.hidden = !open;
-  document.documentElement.classList.toggle('mk-menu-is-open', open);
+  setMenuOpen(Boolean(opener));
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuDrawer && !menuDrawer.hidden) setMenuOpen(false);
 });
