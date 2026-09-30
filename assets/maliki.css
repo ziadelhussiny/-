@@ -226,8 +226,8 @@ html.mk-menu-is-open { overflow: hidden; }
 .mk-craft-card span { display: block; margin-top: 3px; color: #75685c; font-size: .7rem; line-height: 1.25; }
 
 .mk-values { position: relative; isolation: isolate; padding: 27px 0; overflow: hidden; background: #251a13; color: #fff; }
-.mk-values::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('maliki-journey.png') center/cover; opacity: .28; }
-.mk-values::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(20,13,9,.98),rgba(20,13,9,.62),rgba(20,13,9,.82)); }
+.mk-values::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('maliki-heritage-pattern.jpg') center/cover; }
+.mk-values::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(20,13,9,.94),rgba(20,13,9,.72),rgba(20,13,9,.88)); }
 .mk-values__inner { width: var(--mk-page); margin: auto; display: grid; grid-template-columns: 1.35fr 3fr; gap: 40px; align-items: center; }
 .mk-values__intro .mk-section-title { font-size: 1.75rem; }
 .mk-values__grid { display: grid; grid-template-columns: repeat(4,1fr); }
@@ -483,7 +483,7 @@ body.template-index { background: #f7f2e8; }
 .template-index .mk-product-card__bottom small { padding: 4px 6px; border-radius: 999px; background: #e8f3e9; color: #30723a; font: 700 .5rem/1 var(--mk-sans); text-transform: uppercase; }
 
 .mk-seasonal { padding: 18px 0 54px; background: var(--mk-paper); }
-.mk-seasonal__inner { min-height: 112px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 34px; padding: 22px 28px; overflow: hidden; border-radius: 12px; background: linear-gradient(105deg,#5a120e,#98221a); color: #fff; }
+.mk-seasonal__inner { min-height: 112px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 34px; padding: 22px 28px; overflow: hidden; border-radius: 12px; background: linear-gradient(105deg,rgba(73,12,9,.88),rgba(133,27,20,.82)),url('maliki-heritage-pattern.jpg') center/cover; color: #fff; }
 .mk-seasonal__copy .mk-kicker { margin-bottom: 5px; color: #e3b960; }
 .mk-seasonal__copy h2 { margin: 0 0 5px; font: 600 1.55rem/1.1 var(--mk-serif); text-transform: uppercase; }
 .mk-seasonal__copy p:last-child { margin: 0; color: #f4ded8; font: .72rem/1.35 var(--mk-sans); }
@@ -526,7 +526,7 @@ body.template-index { background: #f7f2e8; }
 .template-index .mk-social-grid a { aspect-ratio: 1.45; border-radius: 9px; background: #ead8c3; }
 
 .mk-newsletter-shell { padding: 24px 0 58px; }
-.mk-newsletter { min-height: 130px; display: grid; grid-template-columns: 1fr minmax(360px,.75fr); align-items: center; gap: 40px; padding: 30px 38px; border-radius: 14px; background: #1d1712; color: #fff; text-align: start; }
+.mk-newsletter { min-height: 130px; display: grid; grid-template-columns: 1fr minmax(360px,.75fr); align-items: center; gap: 40px; padding: 30px 38px; border-radius: 14px; background: linear-gradient(rgba(21,16,11,.88),rgba(21,16,11,.88)),url('maliki-heritage-pattern.jpg') center/cover; color: #fff; text-align: start; }
 .mk-newsletter::after { display: none; }
 .mk-newsletter > img { display: none; }
 .mk-newsletter__title { margin: 0 0 7px; font-size: 1.65rem; text-transform: uppercase; }

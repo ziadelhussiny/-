@@ -163,6 +163,17 @@ test('home fallback catalogue photography is large enough for crisp responsive c
   }
 });
 
+test('heritage pattern is used on the three dark feature sections', async () => {
+  const css = await readFile(path.join(root, 'assets', 'maliki.css'), 'utf8');
+  const pattern = await readFile(path.join(root, 'assets', 'maliki-heritage-pattern.jpg'));
+
+  assert.deepEqual([...pattern.subarray(0, 2)], [0xff, 0xd8]);
+  assert.ok(pattern.byteLength < 1024 * 1024, 'pattern asset should stay below 1 MB');
+  assert.match(css, /\.mk-values::before\s*\{[^}]*maliki-heritage-pattern\.jpg/s);
+  assert.match(css, /\.mk-seasonal__inner\s*\{[^}]*maliki-heritage-pattern\.jpg/s);
+  assert.match(css, /\.mk-newsletter\s*\{[^}]*maliki-heritage-pattern\.jpg/s);
+});
+
 test('multiline design headings preserve their authored line breaks', async () => {
   const hero = await readFile(path.join(root, 'sections', 'maliki-hero.liquid'), 'utf8');
   const about = await readFile(path.join(root, 'sections', 'maliki-about-story.liquid'), 'utf8');
