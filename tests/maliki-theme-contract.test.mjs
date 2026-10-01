@@ -188,6 +188,33 @@ test('category carousel movement respects LTR and RTL direction', async () => {
   assert.match(script, /directionFactor/);
 });
 
+test('every horizontal card rail uses side controls and hides its native scrollbar', async () => {
+  const css = await readFile(path.join(root, 'assets', 'maliki.css'), 'utf8');
+
+  for (const sectionName of ['maliki-products.liquid', 'maliki-testimonials.liquid']) {
+    const source = await readFile(path.join(root, 'sections', sectionName), 'utf8');
+    assert.match(source, /<maliki-carousel class="mk-carousel/);
+    assert.match(source, /data-mk-scroll="-1"/);
+    assert.match(source, /data-mk-track/);
+    assert.match(source, /data-mk-scroll="1"/);
+  }
+
+  assert.match(css, /\.template-index \.mk-product-grid[^}]*scrollbar-width:\s*none/s);
+  assert.match(css, /\.template-index \.mk-testimonial-grid[^}]*scrollbar-width:\s*none/s);
+  assert.match(css, /\.mk-product-grid::-webkit-scrollbar[^}]*display:\s*none/s);
+  assert.match(css, /\.mk-testimonial-grid::-webkit-scrollbar[^}]*display:\s*none/s);
+});
+
+test('category-related sections can link directly to Shopify collections', async () => {
+  const categories = await readFile(path.join(root, 'sections', 'maliki-categories.liquid'), 'utf8');
+  const products = await readFile(path.join(root, 'sections', 'maliki-products.liquid'), 'utf8');
+
+  assert.match(categories, /block\.settings\.collection\.url/);
+  assert.match(categories, /"type":\s*"collection",\s*"id":\s*"collection"/);
+  assert.match(products, /section\.settings\.collection\.url/);
+  assert.match(products, /"type":\s*"collection",\s*"id":\s*"collection"/);
+});
+
 test('mobile menu keeps aria state in sync and closes with Escape', async () => {
   const script = await readFile(path.join(root, 'assets', 'maliki.js'), 'utf8');
   assert.match(script, /setAttribute\('aria-expanded'/);

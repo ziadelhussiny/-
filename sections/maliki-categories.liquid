@@ -1,14 +1,21 @@
+{% liquid
+  assign view_all_url = section.settings.view_all_collection.url | default: section.settings.view_all_link | default: routes.collections_url
+%}
+
 <section class="mk-section mk-paper mk-categories" dir="{{ section.settings.direction }}">
   <div class="mk-wrap">
     <div class="mk-section-heading">
       <div><p class="mk-kicker">{{ section.settings.eyebrow }}</p><h2 class="mk-section-title">{{ section.settings.heading }}</h2></div>
-      {% if section.settings.view_all_label != blank %}<a href="{{ section.settings.view_all_link | default: routes.collections_url }}">{{ section.settings.view_all_label }}</a>{% endif %}
+      {% if section.settings.view_all_label != blank %}<a href="{{ view_all_url }}">{{ section.settings.view_all_label }}</a>{% endif %}
     </div>
     <maliki-carousel class="mk-carousel">
       <button class="mk-scroll-button mk-scroll-button--prev" type="button" data-mk-scroll="-1" aria-label="Previous">‹</button>
       <div class="mk-category-track" data-mk-track>
         {% for block in section.blocks %}
-          <a class="mk-category" href="{{ block.settings.link | default: routes.collections_url }}" {{ block.shopify_attributes }}>
+          {% liquid
+            assign category_url = block.settings.collection.url | default: block.settings.link | default: routes.collections_url
+          %}
+          <a class="mk-category" href="{{ category_url }}" {{ block.shopify_attributes }}>
             <div class="mk-category__media">
               {% if block.settings.image != blank %}
                 {{ block.settings.image | image_url: width: 600 | image_tag: widths: '220, 360, 600', loading: 'lazy', alt: block.settings.title }}
@@ -41,6 +48,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by category" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
     { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all" },
+    { "type": "collection", "id": "view_all_collection", "label": "View all collection" },
     { "type": "url", "id": "view_all_link", "label": "View all link" },
     { "type": "select", "id": "direction", "label": "Text direction", "default": "ltr", "options": [
       { "value": "ltr", "label": "Left to right" },
@@ -55,6 +63,7 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "title", "label": "Title", "default": "Majlis seating" },
         { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "From EGP 450" },
+        { "type": "collection", "id": "collection", "label": "Shopify collection" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }

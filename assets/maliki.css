@@ -164,6 +164,7 @@ html.mk-menu-is-open { overflow: hidden; }
 .mk-section-heading a { color: var(--mk-ink); font-size: .84rem; text-underline-offset: 4px; }
 .mk-carousel { position: relative; }
 .mk-scroll-button { position: absolute; z-index: 2; top: 44%; width: 37px; height: 37px; display: grid; place-items: center; border: 1px solid var(--mk-border); border-radius: 50%; background: rgba(255,253,248,.95); color: var(--mk-ink); box-shadow: 0 4px 16px rgba(0,0,0,.08); cursor: pointer; }
+.mk-scroll-button--mobile { display: none; }
 .mk-scroll-button--prev { inset-inline-start: -18px; }
 .mk-scroll-button--next { inset-inline-end: -18px; }
 .mk-category-track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 72px) / 5); gap: 18px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
@@ -356,8 +357,8 @@ html.mk-menu-is-open { overflow: hidden; }
   .mk-section-title { font-size: 1.65rem; }
   .mk-category-track { grid-auto-columns: 42%; gap: 12px; }
   .mk-scroll-button { top: 39%; }
-  .mk-scroll-button--prev { inset-inline-start: -8px; }
-  .mk-scroll-button--next { inset-inline-end: -8px; }
+  .mk-scroll-button--prev { inset-inline-start: 8px; }
+  .mk-scroll-button--next { inset-inline-end: 8px; }
   .mk-category__title { font-size: .78rem; }
   .mk-product-grid { gap: 18px 12px; }
   .mk-product-card__name { font-size: .78rem; }
@@ -465,7 +466,7 @@ body.template-index { background: #f7f2e8; }
 .template-index .mk-category__media { aspect-ratio: 1.55; border: 0; }
 .template-index .mk-category__copy { position: relative; padding: 14px 40px 15px 15px; }
 .template-index .mk-category__title { margin: 0 0 5px; font-size: .88rem; }
-.template-index .mk-category__copy small { color: #78695c; font: .65rem/1.2 var(--mk-sans); }
+.template-index .mk-category__copy small { color: var(--mk-red-dark); font: 700 .88rem/1 var(--mk-sans); }
 .template-index .mk-category__copy > span { position: absolute; inset-inline-end: 14px; top: 50%; transform: translateY(-50%); color: var(--mk-red); }
 .template-index .mk-product-grid { gap: 18px; }
 .template-index .mk-product-card { overflow: hidden; border: 1px solid rgba(86,61,35,.1); border-radius: 12px; background: #fff; box-shadow: 0 10px 28px rgba(43,25,10,.08); }
@@ -599,8 +600,12 @@ body.template-index { background: #f7f2e8; }
   .template-index .mk-section-title { font-size: 1.75rem; }
   .template-index .mk-category-track { grid-auto-columns: 78%; gap: 13px; }
   .template-index .mk-category__media { aspect-ratio: 1.52; }
-  .template-index .mk-product-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 82%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 16px; }
+  .template-index .mk-category__copy small { font-size: .75rem; }
+  .template-index .mk-product-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 82%; grid-template-columns: none; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .template-index .mk-product-grid::-webkit-scrollbar { display: none; }
   .template-index .mk-product-card { scroll-snap-align: start; }
+  .mk-scroll-button--mobile { display: grid; }
+  .mk-products__carousel > .mk-scroll-button { top: 42%; }
   .template-index .mk-product-card__quick { transform: none; }
   .mk-seasonal { padding: 8px 0 38px; }
   .mk-seasonal__inner { width: calc(100% - 28px); grid-template-columns: 1fr; gap: 18px; padding: 24px 20px; }
@@ -614,8 +619,10 @@ body.template-index { background: #f7f2e8; }
   .mk-brand-story__stats { justify-content: space-between; }
   .mk-brand-story__stats > div { min-width: 0; padding-inline: 10px; }
   .mk-brand-story__stats strong { font-size: 1.18rem; }
-  .template-index .mk-testimonial-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 88%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 15px; }
+  .template-index .mk-testimonial-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 88%; grid-template-columns: none; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .template-index .mk-testimonial-grid::-webkit-scrollbar { display: none; }
   .template-index .mk-quote { display: grid; scroll-snap-align: start; }
+  .mk-testimonials__carousel > .mk-scroll-button { top: 50%; }
   .template-index .mk-quote:nth-child(n+2) { display: grid; }
   .mk-quote footer { grid-template-columns: 34px 1fr; }
   .mk-quote footer em { grid-column: 2; justify-self: start; }

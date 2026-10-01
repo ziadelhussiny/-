@@ -1,15 +1,19 @@
 <section class="mk-section mk-paper mk-testimonials" dir="{{ section.settings.direction }}">
   <div class="mk-wrap">
     <div class="mk-section-heading mk-section-heading--center"><div><p class="mk-kicker">{{ section.settings.eyebrow }}</p><h2 class="mk-section-title">{{ section.settings.heading }}</h2></div></div>
-    <div class="mk-testimonial-grid">
-      {% for block in section.blocks %}
-        <article class="mk-quote" {{ block.shopify_attributes }}>
-          <div class="mk-stars" aria-label="{{ block.settings.rating }} out of 5 stars">{% for i in (1..block.settings.rating) %}★{% endfor %}</div>
-          <blockquote>“{{ block.settings.quote }}”</blockquote>
-          <footer><span class="mk-quote__avatar">{{ block.settings.initials }}</span><cite><strong>{{ block.settings.author }}</strong><small>{{ block.settings.location }}</small></cite>{% if block.settings.verified %}<em>✓ Verified</em>{% endif %}</footer>
-        </article>
-      {% endfor %}
-    </div>
+    <maliki-carousel class="mk-carousel mk-testimonials__carousel">
+      <button class="mk-scroll-button mk-scroll-button--prev mk-scroll-button--mobile" type="button" data-mk-scroll="-1" aria-label="Previous reviews">‹</button>
+      <div class="mk-testimonial-grid" data-mk-track>
+        {% for block in section.blocks %}
+          <article class="mk-quote" {{ block.shopify_attributes }}>
+            <div class="mk-stars" aria-label="{{ block.settings.rating }} out of 5 stars">{% for i in (1..block.settings.rating) %}★{% endfor %}</div>
+            <blockquote>“{{ block.settings.quote }}”</blockquote>
+            <footer><span class="mk-quote__avatar">{{ block.settings.initials }}</span><cite><strong>{{ block.settings.author }}</strong><small>{{ block.settings.location }}</small></cite>{% if block.settings.verified %}<em>✓ Verified</em>{% endif %}</footer>
+          </article>
+        {% endfor %}
+      </div>
+      <button class="mk-scroll-button mk-scroll-button--next mk-scroll-button--mobile" type="button" data-mk-scroll="1" aria-label="Next reviews">›</button>
+    </maliki-carousel>
   </div>
 </section>
 
