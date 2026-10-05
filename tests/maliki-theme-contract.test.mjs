@@ -51,6 +51,18 @@ test('the storefront header exposes the reference search and utility navigation 
   assert.match(header, /Track Order/);
 });
 
+test('the Maliki header exposes an optional functional Shopify language switcher', async () => {
+  const header = await readFile(path.join(root, 'sections', 'maliki-header.liquid'), 'utf8');
+  const headerGroup = await readShopifyJson('sections/header-group.json');
+
+  assert.match(header, /section\.settings\.show_language_switcher/);
+  assert.match(header, /localization\.available_languages\.size\s*>\s*1/);
+  assert.match(header, /form\s+'localization'/);
+  assert.match(header, /name="language_code"/);
+  assert.match(header, /"id":\s*"show_language_switcher"/);
+  assert.equal(headerGroup.sections.maliki_header.settings.show_language_switcher, true);
+});
+
 test('desktop composition leaves enough viewport gutter for carousel controls', async () => {
   const css = await readFile(path.join(root, 'assets', 'maliki.css'), 'utf8');
   assert.match(css, /--mk-page:\s*min\(1240px,\s*calc\(100vw\s*-\s*80px\)\)/);

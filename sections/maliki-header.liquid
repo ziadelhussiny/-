@@ -1,5 +1,6 @@
 {% liquid
   assign logo_alt = section.settings.logo.alt | default: shop.name
+  assign language_form_id = 'MalikiLanguageForm-' | append: section.id
 %}
 
 <div class="mk-header-shell" dir="{{ section.settings.direction }}" style="--mk-red: {{ section.settings.accent_color }}; --mk-red-dark: {{ section.settings.announcement_color }};">
@@ -45,6 +46,25 @@
         <a class="mk-icon-link mk-search-link" href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></a>
         <a class="mk-icon-link mk-account-link" href="{{ routes.account_url }}" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 3.5-6.4 8-6.4s7.2 2.2 8 6.4"/></svg><span>Account</span></a>
         <a class="mk-icon-link mk-wishlist-link" href="{{ section.settings.wishlist_link | default: routes.all_products_collection_url }}" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg><span>Wishlist</span></a>
+        {% if section.settings.show_language_switcher and localization.available_languages.size > 1 %}
+          <details class="mk-language-switcher">
+            <summary aria-label="Select language">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4.5 6 4.5 9S15 18 12 21c-3-3-4.5-6-4.5-9S9 6 12 3Z"/></svg>
+              <span>{{ localization.language.iso_code | upcase }}</span>
+              <svg class="mk-language-switcher__caret" viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5"/></svg>
+            </summary>
+            <div class="mk-language-switcher__menu">
+              {% form 'localization', id: language_form_id, class: 'mk-language-switcher__form', return_to: request.path %}
+                {% for language in localization.available_languages %}
+                  <button type="submit" name="language_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %}>
+                    <span>{{ language.endonym_name | capitalize }}</span>
+                    {% if language.iso_code == localization.language.iso_code %}<span aria-hidden="true">✓</span>{% endif %}
+                  </button>
+                {% endfor %}
+              {% endform %}
+            </div>
+          </details>
+        {% endif %}
         <a class="mk-icon-link mk-cart-link" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L20.5 7H5.2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Cart</span><b class="mk-cart-count">{{ cart.item_count }}</b></a>
       </div>
     </div>
@@ -87,6 +107,7 @@
     { "type": "url", "id": "track_link", "label": "Track order link" },
     { "type": "text", "id": "locale_label", "label": "Locale label", "default": "EN / AR" },
     { "type": "text", "id": "currency_label", "label": "Currency label", "default": "EGP" },
+    { "type": "checkbox", "id": "show_language_switcher", "label": "Show language switcher", "info": "Displays published Shopify languages in the header.", "default": true },
     { "type": "color", "id": "announcement_color", "label": "Announcement color", "default": "#3d0907" },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#7b1711" },
     { "type": "select", "id": "direction", "label": "Layout direction", "default": "ltr", "options": [{ "value": "ltr", "label": "Left to right" }, { "value": "rtl", "label": "Right to left" }] },

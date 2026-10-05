@@ -22,6 +22,7 @@
         "track_link": "",
         "locale_label": "EN / AR",
         "currency_label": "EGP",
+        "show_language_switcher": true,
         "announcement_color": "#3d0907",
         "accent_color": "#7b1711",
         "direction": "ltr",
